@@ -1,0 +1,23 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (min-width: 32em) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media (min-width: 49em) {
+      @content;
+    }
+  }
+}
+
+@mixin btn {
+  border: none;
+  border-radius: 0.4rem;
+  color: var(--color-white);
+  cursor: pointer;
+  height: 3.8rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  outline: none;
+}
