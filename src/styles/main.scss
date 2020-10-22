@@ -1,0 +1,9 @@
+@import "abstracts/mixins";
+@import "base/base";
+@import "components/btn";
+
+@import "pages/Landing/styles";
+
+@import "../components/Landing/AuthCard/styles";
+@import "../components/Landing/AuthCard/Signin/styles.scss";
+@import "../components/Landing/AuthCard/Signup/styles";

@@ -1,0 +1,53 @@
+$hero-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+$hero-bg: linear-gradient(
+  to right,
+  var(--color-primary),
+  var(--color-primary-light)
+);
+
+.landing-screen {
+  height: 100%;
+  color: var(--color-white);
+}
+.hero {
+  background-image: $hero-bg;
+  clip-path: $hero-clip-path;
+  height: 85%;
+
+  display: grid;
+  grid-template-rows: 12% 88%;
+  grid-template-columns: 60% 40%;
+  grid-gap: 1rem;
+  grid-template-areas:
+    "header header"
+    "display auth";
+
+  &__header {
+    grid-area: header;
+  }
+  &__display {
+    grid-area: display;
+
+    display: grid;
+    grid-template-rows: 20% auto;
+    grid-gap: 2rem;
+    margin-left: 4rem;
+  }
+  &__auth {
+    grid-area: auth;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__logo {
+    font-size: 9.6rem;
+    font-weight: 400;
+    letter-spacing: var(--letter-spacing-lg);
+    font-family: "Rubik", sans-serif;
+  }
+  &__slogan {
+    font-size: 1.8rem;
+    letter-spacing: var(--letter-spacing-md);
+  }
+}

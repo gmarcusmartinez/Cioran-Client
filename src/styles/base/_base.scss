@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap");
+html,
+body,
+#root {
+  height: 100%;
+}
+:root {
+  --color-primary: #8072fa;
+  --color-primary-light: rgb(179, 171, 252);
+
+  --color-grey-light: #f4f4f4;
+  --color-grey-primary: #bdbdbd;
+  --color-grey-secondary: #9e9e9e;
+
+  --color-white: #fff;
+
+  --color-dark-theme-primary: #121212;
+  --color-dark-theme-secondary: #212121;
+  --color-dark-theme-tertiary: #424242;
+  --color-dark-theme-light: #616161;
+
+  --color-red: #c23b22;
+  --color-orange: #fdfd97;
+  --color-green: #9ee09e;
+
+  --box-shadow-light: 0 0.1rem 0.2rem rgb(0, 0, 0);
+  --box-shadow-medium: 0 0.2rem 0.5rem rgb(0, 0, 0);
+
+  --margin-xs: 0.5rem;
+  --margin-sm: 1rem;
+  --margin-md: 2rem;
+
+  --padding-xs: 0.5rem;
+  --padding-sm: 1rem;
+  --padding-md: 2rem;
+
+  --letter-spacing-sm: 0.1rem;
+  --letter-spacing-md: 0.2rem;
+  --letter-spacing-lg: 0.4rem;
+
+  --transition-fast: 0.25s ease-in;
+  --transition-md: 0.4s ease-in;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  font-size: 62.5%; // 1rem = 10px
+  line-height: 1.4;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
