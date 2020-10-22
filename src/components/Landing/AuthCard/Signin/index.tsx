@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AuthInput from "../AuthInput";
 
 interface IProps {
   setFormDisplay: Function;
@@ -25,18 +26,15 @@ const Signin: React.FC<IProps> = ({ setFormDisplay }) => {
     <div className="auth-card">
       <form className="signin-form" onSubmit={handleSubmit}>
         <h2 className="signin-form__title">Signin To Your Account</h2>
-        <input
+        <AuthInput
           placeholder="Email"
-          type="text"
-          className="auth-input"
           name="email"
           value={email}
           onChange={handleChange}
         />
-        <input
+        <AuthInput
           placeholder="Password"
           type="password"
-          className="auth-input"
           name="password"
           value={password}
           onChange={handleChange}
