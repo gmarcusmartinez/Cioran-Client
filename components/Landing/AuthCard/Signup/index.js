@@ -1,11 +1,20 @@
 import { useState } from "react";
+import Router from "next/router";
 import AuthInput from "../AuthInput";
 import "./styles.scss";
+import useRequest from "../../../../hooks/use-request";
 
 const defaultForm = { name: "", email: "", password: "" };
 
 const Signup = ({ setFormDisplay }) => {
   const [formData, setFormData] = useState(defaultForm);
+
+  const { doRequest, errors } = useRequest({
+    url: "/api/auth/signup",
+    method: "post",
+    body: formData,
+    onSuccess: () => Router.push("/dashboard"),
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,8 +23,7 @@ const Signup = ({ setFormDisplay }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    setFormData(defaultForm);
+    await doRequest();
   };
 
   const handleSetFormDisplay = () => setFormDisplay("RENDER_SIGNIN");

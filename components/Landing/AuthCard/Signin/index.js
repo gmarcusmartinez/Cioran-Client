@@ -1,5 +1,7 @@
 import { useState } from "react";
+import Router from "next/router";
 import AuthInput from "../AuthInput";
+import useRequest from "../../../../hooks/use-request";
 import "./styles.scss";
 
 const Signin = ({ setFormDisplay }) => {
@@ -10,10 +12,16 @@ const Signin = ({ setFormDisplay }) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const { doRequest, errors } = useRequest({
+    url: "/api/auth/signin",
+    method: "post",
+    body: formData,
+    onSuccess: () => Router.push("/dashboard"),
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    setFormData({ email: "", password: "" });
+    await doRequest();
   };
 
   const handleSetFormDisplay = () => setFormDisplay("RENDER_SIGNUP");
