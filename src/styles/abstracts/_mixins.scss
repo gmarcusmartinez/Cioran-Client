@@ -1,3 +1,22 @@
+/*
+ Media Query Manager
+320 - 500px     Mobile - Normal Styling
+481 - 768px     Tablet 
+769 - 1024px    Laptop 
+*/
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (min-width: 32em) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media (min-width: 49em) {
+      @content;
+    }
+  }
+}
+
 @mixin btn {
   border: none;
   border-radius: 0.4rem;
