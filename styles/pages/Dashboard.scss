@@ -1,4 +1,4 @@
-@import "../abstracts/mixins.scss";
+@import "../../styles/abstracts/mixins.scss";
 
 .dashboard-page {
   background-color: var(--color-primary-light);
@@ -13,10 +13,11 @@
 .dashboard {
   height: 100%;
   width: 100%;
-  background-color: var(--color-primary-light);
+  background-color: var(--color-dark-theme-secondary);
+  margin: 0rem;
 }
 
-@include respond(tablet) {
+@include respond(desktop) {
   .dashboard {
     height: 95%;
     width: 95%;
