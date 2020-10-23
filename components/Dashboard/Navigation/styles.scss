@@ -55,9 +55,7 @@ $nav-link-font-size: 1.4rem;
 
     display: none;
   }
-}
-@include respond(tablet) {
-  .navigation {
+  @include respond(tablet) {
     &__header {
       display: grid;
       grid-template-columns: $tablet-grid-cols;
@@ -69,6 +67,33 @@ $nav-link-font-size: 1.4rem;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+  }
+  @include respond(desktop) {
+    height: 100%;
+    &__header {
+      box-shadow: var(--box-shadow-medium);
+      height: 100%;
+      width: 26rem;
+      display: flex;
+      flex-direction: column;
+    }
+    &__usr-img {
+      margin-bottom: var(--margin-sm);
+      margin-top: var(--margin-md);
+      height: 8rem;
+      width: 8rem;
+    }
+    &__usr-name {
+      display: block;
+      margin-bottom: 4rem;
+    }
+    &__link {
+      font-size: 1.5rem;
+      justify-content: unset;
+      padding-left: 5rem;
+      height: 6rem;
+      width: 100%;
     }
   }
 }

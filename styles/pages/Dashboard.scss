@@ -15,10 +15,7 @@
   width: 100%;
   background-color: var(--color-dark-theme-secondary);
   margin: 0rem;
-}
-
-@include respond(desktop) {
-  .dashboard {
+  @include respond(desktop) {
     height: 95%;
     width: 95%;
     max-width: 120rem;
