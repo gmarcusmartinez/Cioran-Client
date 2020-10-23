@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./styles.scss";
-// import MobileNavigation from "../MobileNavigation";
+import MobileNavigation from "../MobileNavigation";
 
 const Navigation = () => {
   const [displayMobileNav, setDisplayMobileNav] = useState(false);
@@ -17,7 +17,10 @@ const Navigation = () => {
           <div className={`bar ${displayMobileNav ? "change" : ""}`}></div>
         </div>
       </div>
-      {/* <MobileNavigation displayMobileNav={displayMobileNav} /> */}
+      <MobileNavigation
+        displayMobileNav={displayMobileNav}
+        setDisplayMobileNav={setDisplayMobileNav}
+      />
     </>
   );
 };
