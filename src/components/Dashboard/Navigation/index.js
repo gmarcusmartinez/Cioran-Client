@@ -10,7 +10,7 @@ const Navigation = () => {
   const [displayMobileNav, setDisplayMobileNav] = useState(false);
 
   return (
-    <div className="navigation">
+    <>
       <div className="navigation__header">
         <MenuBars
           displayMobileNav={displayMobileNav}
@@ -24,7 +24,7 @@ const Navigation = () => {
         displayMobileNav={displayMobileNav}
         setDisplayMobileNav={setDisplayMobileNav}
       />
-    </div>
+    </>
   );
 };
 

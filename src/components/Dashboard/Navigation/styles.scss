@@ -16,8 +16,8 @@ $nav-link-padding-l: 20%;
 $nav-link-font-size: 1.4rem;
 
 .navigation {
-  background-color: var(--color-dark-theme-secondary);
   &__header {
+    background-color: var(--color-dark-theme-secondary);
     box-shadow: var(--box-shadow-light);
     display: flex;
     align-items: center;
@@ -78,14 +78,17 @@ $nav-link-font-size: 1.4rem;
       align-self: center;
     }
   }
-  @include respond(desktop) {
-    height: 100%;
+}
+
+@include respond(desktop) {
+  .navigation {
     &__header {
       box-shadow: var(--box-shadow-medium);
-      height: 100%;
-      width: 24rem;
+      height: 95vh;
       display: flex;
       flex-direction: column;
+
+      width: 100%;
     }
     &__usr-img {
       margin-bottom: var(--margin-sm);

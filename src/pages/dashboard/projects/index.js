@@ -1,15 +1,10 @@
-import Navigation from "components/Dashboard/Navigation";
+import DashboardLayout from "Layouts/DashboardLayout";
 import "styles/main.global.scss";
-import "styles/pages/Dashboard.scss";
 
-const DashboardPage = () => {
-  return (
-    <div className="dashboard-page">
-      <div className="dashboard">
-        <Navigation />
-      </div>
-    </div>
-  );
+const ProjectConsole = () => {
+  return <div style={{ color: "#fff" }}>Project Console</div>;
 };
 
-export default DashboardPage;
+ProjectConsole.Layout = DashboardLayout;
+
+export default ProjectConsole;

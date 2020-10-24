@@ -1,0 +1,10 @@
+import DashboardLayout from "Layouts/DashboardLayout";
+import "styles/main.global.scss";
+
+const MyQueue = () => {
+  return <div style={{ color: "#fff" }}>My Queue</div>;
+};
+
+MyQueue.Layout = DashboardLayout;
+
+export default MyQueue;

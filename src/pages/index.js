@@ -1,12 +1,24 @@
 import "styles/main.global.scss";
 import "styles/pages/Landing.scss";
+import { useEffect } from "react";
 import AuthCard from "components/Landing/AuthCard";
+// import buildClient from "api/build-client";
+import { useRouter } from "next/router";
 
 const headerText = "Cioran";
 const slogan =
   "Plan, track, and manage your agile and software development projects in Cioran. Customize your workflow, collaborate, and release greatsoftware.";
 
-const LandingPage = () => {
+const LandingPage = ({ currentUser }) => {
+  const router = useRouter();
+  const redirectToDashboard = () => {
+    if (currentUser) router.push("/dashboard/projects");
+  };
+
+  useEffect(() => {
+    redirectToDashboard();
+  }, []);
+
   return (
     <div className="landing-page">
       <div className="hero">
@@ -25,5 +37,12 @@ const LandingPage = () => {
     </div>
   );
 };
+
+// LandingPage.getInitialProps = async (context) => {
+//   const client = buildClient(context);
+//   const { data } = await client.get("/api/auth/currentuser");
+
+//   return data;
+// };
 
 export default LandingPage;

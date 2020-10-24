@@ -5,7 +5,7 @@ export const links = [
   },
   {
     text: "my queue",
-    to: "/dashboard/queue",
+    to: "/dashboard/my-queue",
   },
   {
     text: "inbox",
