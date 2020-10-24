@@ -1,0 +1,112 @@
+@import "styles/abstracts/mixins.scss";
+@import "styles/abstracts/animations.scss";
+
+$user-img-height: 6rem;
+$user-img-width: 6rem;
+$user-img-border-radius: 50%;
+$user-name-font-size: 1.2rem;
+
+$tablet-grid-cols: repeat(6, 1fr);
+$tablet-user-img-height: 5rem;
+$tablet-user-img-width: 5rem;
+
+$nav-link-background-color: transparent;
+$nav-link-color-transition: 0.5s;
+$nav-link-padding-l: 20%;
+$nav-link-font-size: 1.4rem;
+
+.navigation {
+  background-color: var(--color-dark-theme-secondary);
+  &__header {
+    box-shadow: var(--box-shadow-light);
+    display: flex;
+    align-items: center;
+    height: 10vh;
+  }
+  &__usr-img {
+    justify-self: center;
+    background-color: var(--color-primary-light);
+    border-radius: $user-img-border-radius;
+    height: $user-img-height;
+    width: $user-img-width;
+
+    display: none;
+  }
+  &__usr-name {
+    align-self: center;
+    color: var(--color-grey-secondary);
+    font-size: $user-name-font-size;
+    letter-spacing: var(--letter-spacing-sm);
+
+    display: none;
+  }
+  &__link {
+    @include btn_hover_animation;
+    background-color: $nav-link-background-color;
+    color: var(--color-grey-light);
+    font-size: $nav-link-font-size;
+    font-weight: 300;
+    height: 100%;
+    letter-spacing: var(--letter-spacing-md);
+    position: relative;
+    text-decoration: none;
+    text-transform: capitalize;
+    z-index: 0;
+
+    display: none;
+
+    a {
+      height: 100%;
+      width: 100%;
+      color: var(--color-grey-light);
+      line-height: 8rem;
+      text-decoration: none;
+    }
+  }
+  @include respond(tablet) {
+    &__header {
+      height: 8rem;
+      display: grid;
+      grid-template-columns: $tablet-grid-cols;
+    }
+    &__usr-img {
+      display: block;
+    }
+    &__link {
+      display: flex;
+      text-align: center;
+      align-self: center;
+    }
+  }
+  @include respond(desktop) {
+    height: 100%;
+    &__header {
+      box-shadow: var(--box-shadow-medium);
+      height: 100%;
+      width: 24rem;
+      display: flex;
+      flex-direction: column;
+    }
+    &__usr-img {
+      margin-bottom: var(--margin-sm);
+      margin-top: var(--margin-md);
+      height: 8rem;
+      width: 8rem;
+    }
+    &__usr-name {
+      display: block;
+      margin-bottom: 4rem;
+    }
+    &__link {
+      font-size: 1.5rem;
+      justify-content: unset;
+      padding-left: 5rem;
+      height: 6rem;
+      width: 100%;
+      text-align: unset;
+      a {
+        line-height: 6rem;
+      }
+    }
+  }
+}
