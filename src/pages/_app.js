@@ -1,4 +1,6 @@
+import { wrapper } from "../store";
 // import buildClient from "api/build-client";
+const EmptyLayout = ({ children }) => <>{children}</>;
 
 const AppComponent = ({ Component, pageProps }) => {
   const Layout = Component.Layout || EmptyLayout;
@@ -10,19 +12,18 @@ const AppComponent = ({ Component, pageProps }) => {
   );
 };
 
-const EmptyLayout = ({ children }) => <>{children}</>;
-// AppComponent.getInitialProps = async (appContext) => {
-//   const client = buildClient(appContext.ctx);
-//   const { data } = await client.get("/api/auth/currentuser");
+AppComponent.getInitialProps = async (appContext) => {
+  // const client = buildClient(appContext.ctx);
+  // const { data } = await client.get("/api/auth/currentuser");
 
-//   let pageProps = {};
-//   if (appContext.Component.getInitialProps) {
-//     pageProps = await appContext.Component.getInitialProps(appContext.ctx);
-//   }
-//   return {
-//     pageProps,
-//     ...data,
-//   };
-// };
+  let pageProps = {};
+  if (appContext.Component.getInitialProps) {
+    pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+  }
+  return {
+    pageProps,
+    // ...data,
+  };
+};
 
-export default AppComponent;
+export default wrapper.withRedux(AppComponent);
