@@ -1,15 +1,16 @@
+import { TOGGLE_MODAL } from "store/actions/types";
+
 const initialState = {
   displayModal: false,
-  component: "",
 };
 
 export const modal = (state = initialState, action) => {
   const { type, payload } = action;
+
   switch (type) {
-    case "SET_DISPLAY_MODAL":
+    case TOGGLE_MODAL:
       return {
-        displayModal: payload.bool,
-        component: payload.component,
+        displayModal: payload,
       };
     default:
       return state;

@@ -1,16 +1,19 @@
 import "./styles.scss";
+import { connect } from "react-redux";
+import { toggleNav } from "store/actions/nav/toggleNav";
 
-const MenuBars = ({ displayMobileNav, setDisplayMobileNav }) => {
+const MenuBars = ({ isOpen, toggleNav }) => {
   return (
-    <div
-      className="menu-bars"
-      onClick={() => setDisplayMobileNav(!displayMobileNav)}
-    >
-      <div className={`bar ${displayMobileNav ? "change" : ""}`}></div>
-      <div className={`bar ${displayMobileNav ? "change" : ""}`}></div>
-      <div className={`bar ${displayMobileNav ? "change" : ""}`}></div>
+    <div className="menu-bars" onClick={() => toggleNav(!isOpen)}>
+      <div className={`bar ${isOpen ? "change" : ""}`}></div>
+      <div className={`bar ${isOpen ? "change" : ""}`}></div>
+      <div className={`bar ${isOpen ? "change" : ""}`}></div>
     </div>
   );
 };
 
-export default MenuBars;
+const mapStateToProps = (state) => ({
+  isOpen: state.nav.isOpen,
+});
+
+export default connect(mapStateToProps, { toggleNav })(MenuBars);

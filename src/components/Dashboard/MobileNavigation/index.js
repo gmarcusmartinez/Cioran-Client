@@ -1,16 +1,22 @@
-import { links } from "../Links";
 import Link from "next/link";
+import { connect } from "react-redux";
+import { toggleNav } from "store/actions/nav/toggleNav";
 import "./styles.scss";
+import { links } from "../Links";
 
-const MobileNavigation = ({ displayMobileNav, setDisplayMobileNav }) => {
+const MobileNavigation = ({ isOpen, toggleNav }) => {
   return (
-    <ul className={`mobile-navigation ${displayMobileNav ? "open" : "closed"}`}>
-      {renderLinks(displayMobileNav, setDisplayMobileNav)}
+    <ul className={`mobile-navigation ${isOpen ? "open" : "closed"}`}>
+      {renderLinks(isOpen, toggleNav)}
     </ul>
   );
 };
 
-export default MobileNavigation;
+const mapStateToProps = (state) => ({
+  isOpen: state.nav.isOpen,
+});
+
+export default connect(mapStateToProps, { toggleNav })(MobileNavigation);
 
 const renderLinks = (bool, cb) => {
   const className = "mobile-navigation__link";

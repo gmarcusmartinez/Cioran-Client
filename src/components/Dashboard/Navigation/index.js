@@ -7,23 +7,15 @@ import MenuBars from "components/Dashboard/MenuBars";
 import MobileNavigation from "components/Dashboard/MobileNavigation";
 
 const Navigation = () => {
-  const [displayMobileNav, setDisplayMobileNav] = useState(false);
-
   return (
     <>
       <div className="navigation__header">
-        <MenuBars
-          displayMobileNav={displayMobileNav}
-          setDisplayMobileNav={setDisplayMobileNav}
-        />
+        <MenuBars />
         <div className="navigation__usr-img"></div>
         <div className="navigation__usr-name">Test User</div>
         {renderLinks()}
       </div>
-      <MobileNavigation
-        displayMobileNav={displayMobileNav}
-        setDisplayMobileNav={setDisplayMobileNav}
-      />
+      <MobileNavigation />
     </>
   );
 };

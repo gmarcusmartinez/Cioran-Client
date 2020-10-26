@@ -12,16 +12,13 @@
   width: 100%;
 
   &:active {
-    background-color: var(--color-primary);
-    transform: translateY(0.4rem);
-    transform: translateX(0.2rem);
+    transform: translateY(-2px);
   }
   @include respond(tablet) {
     display: flex;
     align-items: center;
     text-align: center;
 
-    background-color: var(--color-dark-theme-tertiary);
     border-radius: 0.4rem;
     border: 0.2rem dashed var(--color-grey-light);
     box-shadow: var(--box-shadow-medium);
@@ -31,18 +28,17 @@
     padding: var(--padding-sm);
     width: 15rem;
 
-    transition: background-color var(--transition-fast);
     transition: border var(--transition-fast);
     transition: box-shadow var(--transition-fast);
     transition: color var(--transition-fast);
-    transition: transform var(--transition-fast);
+    transition: transform 0.1s;
 
     &:hover {
-      background-color: var(--color-dark-theme-primary);
-      border: 0.2rem dashed var(--color-primary-light);
       box-shadow: 0 10px 20px rgb(0, 0, 0);
-      color: var(--color-primary-light);
       transform: translateY(2px);
+    }
+    &:active {
+      transform: translateY(-2px);
     }
   }
 }
