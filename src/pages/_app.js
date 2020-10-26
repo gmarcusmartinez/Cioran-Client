@@ -1,4 +1,6 @@
 import { wrapper } from "../store";
+import { END } from "redux-saga";
+
 // import buildClient from "api/build-client";
 const EmptyLayout = ({ children }) => <>{children}</>;
 
@@ -12,13 +14,17 @@ const AppComponent = ({ Component, pageProps }) => {
   );
 };
 
-AppComponent.getInitialProps = async (appContext) => {
+AppComponent.getInitialProps = async ({ Component, ctx }) => {
   // const client = buildClient(appContext.ctx);
   // const { data } = await client.get("/api/auth/currentuser");
 
-  let pageProps = {};
-  if (appContext.Component.getInitialProps) {
-    pageProps = await appContext.Component.getInitialProps(appContext.ctx);
+  const pageProps = {
+    ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+  };
+
+  if (ctx.req) {
+    ctx.store.dispatch(END);
+    await ctx.store.sagaTask.toPromise();
   }
   return {
     pageProps,

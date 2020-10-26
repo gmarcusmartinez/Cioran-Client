@@ -1,4 +1,5 @@
 import { links } from "../Links";
+import Link from "next/link";
 import "./styles.scss";
 
 const MobileNavigation = ({ displayMobileNav, setDisplayMobileNav }) => {
@@ -20,7 +21,9 @@ const renderLinks = (bool, cb) => {
       className={`${className} ${direction}-${i}`}
       onClick={() => cb(false)}
     >
-      <a to={l.to}>{l.text}</a>
+      <Link href={l.to}>
+        <a>{l.text}</a>
+      </Link>
     </li>
   ));
   return linkEls;

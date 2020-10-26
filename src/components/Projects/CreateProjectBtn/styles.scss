@@ -1,0 +1,56 @@
+@import "styles/abstracts/mixins.scss";
+
+.create-project-btn {
+  background-color: var(--color-dark-theme-primary);
+  color: var(--color-grey-light);
+  font-size: 1.6rem;
+  font-weight: 300;
+  height: 12vh;
+  letter-spacing: var(--letter-spacing-md);
+  opacity: 0.8;
+  padding: var(--padding-sm);
+  width: 100%;
+
+  &:active {
+    background-color: var(--color-primary);
+    transform: translateY(0.4rem);
+    transform: translateX(0.2rem);
+  }
+  @include respond(tablet) {
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    background-color: var(--color-dark-theme-tertiary);
+    border-radius: 0.4rem;
+    border: 0.2rem dashed var(--color-grey-light);
+    box-shadow: var(--box-shadow-medium);
+    cursor: pointer;
+    height: 15rem;
+    line-height: 2;
+    padding: var(--padding-sm);
+    width: 15rem;
+
+    transition: background-color var(--transition-fast);
+    transition: border var(--transition-fast);
+    transition: box-shadow var(--transition-fast);
+    transition: color var(--transition-fast);
+    transition: transform var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-dark-theme-primary);
+      border: 0.2rem dashed var(--color-primary-light);
+      box-shadow: 0 10px 20px rgb(0, 0, 0);
+      color: var(--color-primary-light);
+      transform: translateY(2px);
+    }
+  }
+}
+
+.plus {
+  font-size: inherit;
+  margin-left: var(--margin-sm);
+  @include respond(tablet) {
+    display: none;
+  }
+}

@@ -13,6 +13,7 @@
   flex-direction: column;
   justify-content: stretch;
   list-style: none;
+  z-index: 2;
 
   &.open {
     transition: all 0.4s;
@@ -26,11 +27,13 @@
     height: 20%;
     overflow: hidden;
     background-color: var(--color-dark-theme-secondary);
+
     a {
       color: var(--color-grey-light);
       display: block;
       letter-spacing: var(--letter-spacing-lg);
       position: relative;
+      font-size: 1.4rem;
       top: 45%;
       text-align: center;
       text-decoration: none;
