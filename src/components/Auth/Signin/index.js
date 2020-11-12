@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Router from "next/router";
-import AuthInput from "components/Landing/AuthCard/AuthInput";
+import AuthInput from "components/Auth/AuthInput";
 import useRequest from "hooks/use-request";
-import "./styles.scss";
 
 const Signin = ({ setFormDisplay }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -24,6 +23,9 @@ const Signin = ({ setFormDisplay }) => {
     await doRequest();
   };
 
+  const setError = (field) =>
+    errors ? errors.find((err) => err.field === field) : null;
+
   const handleSetFormDisplay = () => setFormDisplay("RENDER_SIGNUP");
   const { email, password } = formData;
 
@@ -36,6 +38,7 @@ const Signin = ({ setFormDisplay }) => {
           name="email"
           value={email}
           onChange={handleChange}
+          error={setError("email")}
         />
         <AuthInput
           placeholder="Password"
@@ -43,6 +46,7 @@ const Signin = ({ setFormDisplay }) => {
           name="password"
           value={password}
           onChange={handleChange}
+          error={setError("password")}
         />
         <button className="signin-form__btn btn-primary">Signin</button>
         <div className="set-form-display">

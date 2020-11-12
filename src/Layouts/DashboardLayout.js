@@ -1,7 +1,6 @@
 import React from "react";
 import Modal from "components/Common/Modal";
 import Navigation from "components/Dashboard/Navigation";
-import "./styles.scss";
 
 const DashboardLayout = ({ children }) => {
   return (

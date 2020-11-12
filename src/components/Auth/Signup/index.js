@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Router from "next/router";
-import AuthInput from "components/Landing/AuthCard/AuthInput";
-import "./styles.scss";
+import AuthInput from "components/Auth/AuthInput";
 import useRequest from "hooks/use-request";
 
 const defaultForm = { name: "", email: "", password: "" };
@@ -25,11 +24,10 @@ const Signup = ({ setFormDisplay }) => {
     e.preventDefault();
     await doRequest();
   };
-  const setError = (field) => {
-    let inputError;
-    if (errors) inputError = errors.find((err) => err.field === field);
-    return inputError ? inputError : "";
-  };
+
+  const setError = (field) =>
+    errors ? errors.find((err) => err.field === field) : null;
+
   const handleSetFormDisplay = () => setFormDisplay("RENDER_SIGNIN");
 
   const { name, email, password } = formData;

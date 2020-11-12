@@ -1,23 +1,37 @@
+import { useMemo } from "react";
 import { createStore, applyMiddleware } from "redux";
-import { createWrapper } from "next-redux-wrapper";
 import { composeWithDevTools } from "redux-devtools-extension";
-import createSagaMiddleware from "redux-saga";
-import thunk from "redux-thunk";
+import thunkMiddleware from "redux-thunk";
+import { rootReducer } from "./reducers";
 
-import { rootReducer } from "store/reducers";
-import { rootSaga } from "store/sagas";
+let store;
 
-const makeStore = (context) => {
-  const sagaMiddleware = createSagaMiddleware();
-  const middlewares = [thunk, sagaMiddleware];
-
-  const store = createStore(
+function initStore(initialState) {
+  return createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(...middlewares))
+    initialState,
+    composeWithDevTools(applyMiddleware(thunkMiddleware))
   );
+}
 
-  store.sagaTask = sagaMiddleware.run(rootSaga);
-  return store;
+export const initializeStore = (preloadedState) => {
+  let _store = store ?? initStore(preloadedState);
+
+  if (preloadedState && store) {
+    _store = initStore({
+      ...store.getState(),
+      ...preloadedState,
+    });
+    store = undefined;
+  }
+
+  if (typeof window === "undefined") return _store;
+  if (!store) store = _store;
+
+  return _store;
 };
 
-export const wrapper = createWrapper(makeStore);
+export function useStore(initialState) {
+  const store = useMemo(() => initializeStore(initialState), [initialState]);
+  return store;
+}

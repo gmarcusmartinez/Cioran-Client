@@ -1,4 +1,3 @@
-import "./styles.scss";
 import { connect } from "react-redux";
 import { toggleNav } from "store/actions/nav/toggleNav";
 

@@ -1,5 +1,3 @@
-@import "styles/abstracts/mixins.scss";
-
 .create-project-btn {
   background-color: var(--color-dark-theme-primary);
   color: var(--color-grey-light);
@@ -23,10 +21,10 @@
     border: 0.2rem dashed var(--color-grey-light);
     box-shadow: var(--box-shadow-medium);
     cursor: pointer;
-    height: 15rem;
+    height: 14rem;
     line-height: 2;
     padding: var(--padding-sm);
-    width: 15rem;
+    width: 14rem;
 
     transition: border var(--transition-fast);
     transition: box-shadow var(--transition-fast);

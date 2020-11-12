@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Signin from "./Signin";
 import Signup from "./Signup";
-import "./styles.scss";
 
 const AuthCard = () => {
   const [formDisplay, setFormDisplay] = useState("RENDER_SIGNIN");

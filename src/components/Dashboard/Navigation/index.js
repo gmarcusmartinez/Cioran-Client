@@ -1,7 +1,4 @@
-import "./styles.scss";
-import { useState } from "react";
-import Link from "next/link";
-
+import Link from "components/Common/Link/";
 import { links } from "components/Dashboard/Links";
 import MenuBars from "components/Dashboard/MenuBars";
 import MobileNavigation from "components/Dashboard/MobileNavigation";

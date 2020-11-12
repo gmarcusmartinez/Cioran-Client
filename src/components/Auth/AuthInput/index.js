@@ -1,5 +1,3 @@
-import "./styles.scss";
-
 const AuthInput = ({ placeholder, name, value, type, onChange, error }) => {
   return (
     <div className="input-groupd">

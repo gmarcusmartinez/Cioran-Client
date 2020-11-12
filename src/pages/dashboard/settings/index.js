@@ -1,5 +1,4 @@
-import DashboardLayout from "Layouts/DashboardLayout";
-import "styles/main.global.scss";
+import DashboardLayout from "layouts/DashboardLayout";
 
 const Settings = () => {
   return <div style={{ color: "#fff" }}>Settings Page</div>;

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { connect } from "react-redux";
 import { toggleNav } from "store/actions/nav/toggleNav";
-import "./styles.scss";
 import { links } from "../Links";
 
 const MobileNavigation = ({ isOpen, toggleNav }) => {

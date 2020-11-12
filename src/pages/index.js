@@ -1,9 +1,7 @@
-import "styles/main.global.scss";
-import "styles/pages/Landing.scss";
 import { useEffect } from "react";
-import AuthCard from "components/Landing/AuthCard";
-// import buildClient from "api/build-client";
+import AuthCard from "components/Auth";
 import { useRouter } from "next/router";
+import buildClient from "api/build-client";
 
 const headerText = "Cioran";
 const slogan =
@@ -11,12 +9,9 @@ const slogan =
 
 const LandingPage = ({ currentUser }) => {
   const router = useRouter();
-  const redirectToDashboard = () => {
-    if (currentUser) router.push("/dashboard/projects");
-  };
 
   useEffect(() => {
-    redirectToDashboard();
+    if (currentUser) router.push("/dashboard/projects");
   }, []);
 
   return (
@@ -38,11 +33,11 @@ const LandingPage = ({ currentUser }) => {
   );
 };
 
-// LandingPage.getInitialProps = async (context) => {
-//   const client = buildClient(context);
-//   const { data } = await client.get("/api/auth/currentuser");
+LandingPage.getInitialProps = async (context) => {
+  const client = buildClient(context);
+  const { data } = await client.get("/api/auth/currentuser");
 
-//   return data;
-// };
+  return data;
+};
 
 export default LandingPage;

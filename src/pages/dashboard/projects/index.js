@@ -1,7 +1,5 @@
 import CreateProjectBtn from "components/Projects/CreateProjectBtn";
-import DashboardLayout from "Layouts/DashboardLayout";
-import "styles/main.global.scss";
-import "./styles.scss";
+import DashboardLayout from "layouts/DashboardLayout";
 
 const ProjectConsole = () => {
   return (
