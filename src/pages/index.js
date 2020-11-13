@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import AuthCard from "components/Auth";
 import { useRouter } from "next/router";
-import buildClient from "api/build-client";
+// import buildClient from "api/build-client";
 
 const headerText = "Cioran";
 const slogan =
@@ -34,10 +34,9 @@ const LandingPage = ({ currentUser }) => {
 };
 
 LandingPage.getInitialProps = async (context) => {
-  const client = buildClient(context);
-  const { data } = await client.get("/api/auth/currentuser");
-
-  return data;
+  // const client = buildClient(context);
+  // const { data } = await client.get("/api/auth/currentuser");
+  // return data;
 };
 
 export default LandingPage;

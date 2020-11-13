@@ -1,8 +1,10 @@
 import { TOGGLE_MODAL } from "../types";
 
-export const toggleModal = (bool) => (dispatch) => {
+export const toggleModal = ({ displayModal, component, data }) => (
+  dispatch
+) => {
   dispatch({
     type: TOGGLE_MODAL,
-    payload: bool,
+    payload: { displayModal, component, data },
   });
 };

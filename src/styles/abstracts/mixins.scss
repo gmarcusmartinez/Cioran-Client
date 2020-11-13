@@ -26,3 +26,38 @@
   font-weight: 500;
   outline: none;
 }
+
+@mixin default-form {
+  height: 100%;
+  width: 100%;
+
+  &__title {
+    color: var(--color-grey-light);
+    align-self: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    letter-spacing: var(--letter-spacing-lg);
+  }
+  &__btn {
+    background-color: transparent;
+    border: none;
+    color: var(--color-grey-light);
+    cursor: pointer;
+    height: 4rem;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: var(--letter-spacing-lg);
+    outline: none;
+    text-transform: uppercase;
+    text-align: start;
+    width: 100%;
+
+    &:active {
+      transform: translateY(3px);
+      color: var(--color-primary-light);
+    }
+    &:hover {
+      color: var(--color-primary-light);
+    }
+  }
+}
