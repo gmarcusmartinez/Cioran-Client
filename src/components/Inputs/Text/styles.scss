@@ -4,15 +4,14 @@
   input {
     background-color: transparent;
     border: none;
-    border-bottom: 0.1rem solid var(--color-grey-light);
+    border-bottom: 0.1rem solid var(--color-grey-primary);
     color: var(--color-grey-light);
     font-size: 1.4rem;
     height: 4rem;
     letter-spacing: var(--letter-spacing-md);
     outline: none;
-    transition: var(--transition-fast);
     &:focus {
-      border-bottom: 0.2rem solid var(--color-primary-light);
+      animation: input-focus 0.4s linear both;
     }
   }
   label {
