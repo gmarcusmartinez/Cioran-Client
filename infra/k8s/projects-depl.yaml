@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cioran-projects-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cioran-projects
+  template:
+    metadata:
+      labels:
+        app: cioran-projects
+    spec:
+      containers:
+        - name: cioran-projects
+          image: gmarcusmartinez/cioran-projects
+          env:
+            - name: MONGO_URI
+              value: "mongodb://cioran-projects-mongo-srv:27017/projects"
+            - name: NATS_URL
+              value: "http://nats-srv:4222"
+            - name: NATS_CLUSTER_ID
+              value: cioran
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cioran-projects-srv
+spec:
+  selector:
+    app: cioran-projects
+  ports:
+    - name: cioran-projects
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

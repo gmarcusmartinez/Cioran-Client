@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cioran-projects-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cioran-projects-mongo
+  template:
+    metadata:
+      labels:
+        app: cioran-projects-mongo
+    spec:
+      containers:
+        - name: cioran-projects-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cioran-projects-mongo-srv
+spec:
+  selector:
+    app: cioran-projects-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

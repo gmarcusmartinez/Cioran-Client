@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cioran-client-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cioran-client
+  template:
+    metadata:
+      labels:
+        app: cioran-client
+    spec:
+      containers:
+        - name: cioran-client
+          image: gmarcusmartinez/cioran-client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cioran-client-srv
+spec:
+  selector:
+    app: cioran-client
+  ports:
+    - name: cioran-client
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

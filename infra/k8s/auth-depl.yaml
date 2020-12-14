@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cioran-auth-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cioran-auth
+  template:
+    metadata:
+      labels:
+        app: cioran-auth
+    spec:
+      containers:
+        - name: cioran-auth
+          image: gmarcusmartinez/cioran-auth
+          env:
+            - name: MONGO_URI
+              value: "mongodb://cioran-auth-mongo-srv:27017/auth"
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cioran-auth-srv
+spec:
+  selector:
+    app: cioran-auth
+  ports:
+    - name: cioran-auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

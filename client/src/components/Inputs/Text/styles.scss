@@ -1,0 +1,41 @@
+.text-input {
+  display: flex;
+  flex-direction: column;
+  input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.1rem solid var(--color-grey-primary);
+    color: var(--color-grey-light);
+    font-size: 1.4rem;
+    height: 4rem;
+    letter-spacing: var(--letter-spacing-md);
+    outline: none;
+    &:focus {
+      animation: input-focus 0.25s linear both;
+    }
+  }
+  label {
+    color: var(--color-grey-light);
+    font-size: 1.2rem;
+    letter-spacing: var(--letter-spacing-md);
+  }
+  &__required {
+    color: var(--color-primary-light);
+    margin-left: var(--margin-xs);
+  }
+  &__info {
+    color: var(--color-grey-light);
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: var(--letter-spacing-sm);
+    margin-top: var(--margin-xs);
+  }
+
+  .input-error {
+    color: var(--color-red);
+    font-size: 1.2rem;
+    letter-spacing: var(--letter-spacing-sm);
+    text-align: start;
+    margin-top: var(--margin-sm);
+  }
+}
