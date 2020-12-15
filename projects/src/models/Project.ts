@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { UserDoc, RoleType } from "./User";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 interface UserSubDoc extends UserDoc {
   role: RoleType;
@@ -12,6 +13,7 @@ interface ProjectAttrs {
 }
 
 interface ProjectDoc extends mongoose.Document {
+  id: string;
   title: string;
   slug: string;
   projectOwner: string;
@@ -56,10 +58,10 @@ const projectSchema = new mongoose.Schema(
     },
   }
 );
+projectSchema.set("versionKey", "version");
+projectSchema.plugin(updateIfCurrentPlugin);
 
-projectSchema.statics.build = (attrs: ProjectAttrs) => {
-  return new Project(attrs);
-};
+projectSchema.statics.build = (attrs: ProjectAttrs) => new Project(attrs);
 
 projectSchema.methods.assignRole = function (user: UserDoc, role: RoleType) {
   const userSubDoc = { ...user, role };

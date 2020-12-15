@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
 
 interface ProjectAttrs {
+  id: string;
   title: string;
 }
 
 export interface ProjectDoc extends mongoose.Document {
+  id: string;
   title: string;
 }
 

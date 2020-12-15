@@ -11,7 +11,7 @@ var Publisher = /** @class */ (function () {
             _this.client.publish(_this.subject, JSON.stringify(data), function (err) {
                 if (err)
                     return reject(err);
-                console.log("Event Published", _this.subject);
+                console.log("Event Published: ", _this.subject);
                 resolve();
             });
         });
