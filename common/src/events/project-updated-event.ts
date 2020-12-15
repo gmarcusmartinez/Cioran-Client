@@ -1,5 +1,5 @@
 import { Subjects } from "../subjects";
-//testing npm publish
+
 export interface ProjectUpdatedEvent {
   subject: Subjects.ProjectUpdated;
   data: {
