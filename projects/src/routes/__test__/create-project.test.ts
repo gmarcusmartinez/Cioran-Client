@@ -3,6 +3,8 @@ import { app } from "../../app";
 import { Project } from "../../models/Project";
 import { fakeAuthCookie } from "../../test/auth-helper";
 import { natsWrapper } from "../../nats-wrapper";
+import mongoose from "mongoose";
+import { User } from "../../models/User";
 
 describe("Route Access", () => {
   it("has a route handler listening to /api/projects for post requests", async () => {
@@ -57,6 +59,12 @@ describe("Successful Project Creation", () => {
   const slug = "TEST";
 
   it("returns a project with valid form inputs", async () => {
+    const mockUser = await User.build({
+      name: "Marcus Martinez",
+      avatar: "picture.jpg",
+    });
+    mockUser.id = new mongoose.Types.ObjectId().toHexString();
+
     let projects = await Project.find({});
     expect(projects.length).toEqual(0);
 
@@ -65,7 +73,6 @@ describe("Successful Project Creation", () => {
       .set("Cookie", fakeAuthCookie())
       .send({ title, slug })
       .expect(201);
-
     projects = await Project.find({});
 
     expect(projects.length).toEqual(1);

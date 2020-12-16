@@ -64,7 +64,8 @@ projectSchema.plugin(updateIfCurrentPlugin);
 projectSchema.statics.build = (attrs: ProjectAttrs) => new Project(attrs);
 
 projectSchema.methods.assignRole = function (user: UserDoc, role: RoleType) {
-  const userSubDoc = { ...user, role };
+  const { name, avatar } = user;
+  const userSubDoc = { _id: user.id, avatar, name, role };
   return this.team.push(userSubDoc);
 };
 

@@ -1,4 +1,3 @@
-import { UserCreatedListener } from "../events/listeners/user-created-listener";
 import { natsWrapper } from "../nats-wrapper";
 
 export const connectNats = async () => {
@@ -14,6 +13,4 @@ export const connectNats = async () => {
   });
   process.on("SIGINT", () => natsWrapper.client.close());
   process.on("SIGTERM", () => natsWrapper.client.close());
-
-  new UserCreatedListener(natsWrapper.client).listen();
 };

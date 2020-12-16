@@ -5,7 +5,7 @@ import { connectNats } from "./config/connect-nats";
 const start = () => {
   connectNats();
   connectDB();
+  app.listen(3000, () => console.log("App listening:3000"));
 };
 
 start();
-app.listen(3000, () => console.log("App listening:3000"));

@@ -19,7 +19,7 @@ export const updateProject = asyncHandler(
     project.set({ title, slug });
     await project.save();
 
-    new ProjectUpdatedPublisher(natsWrapper.client).publish({
+    await new ProjectUpdatedPublisher(natsWrapper.client).publish({
       id: project.id,
       title: project.title,
       slug: project.slug,
