@@ -5,4 +5,5 @@ var Subjects;
 (function (Subjects) {
     Subjects["ProjectCreated"] = "project:created";
     Subjects["ProjectUpdated"] = "project:updated";
+    Subjects["UserCreated"] = "user:created";
 })(Subjects = exports.Subjects || (exports.Subjects = {}));

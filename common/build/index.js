@@ -26,3 +26,4 @@ __exportStar(require("./abstracts/Publisher"), exports);
 __exportStar(require("./subjects"), exports);
 __exportStar(require("./events/project-created-event"), exports);
 __exportStar(require("./events/project-updated-event"), exports);
+__exportStar(require("./events/user-created-event"), exports);
