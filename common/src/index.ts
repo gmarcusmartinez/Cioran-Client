@@ -18,3 +18,4 @@ export * from "./subjects";
 
 export * from "./events/project-created-event";
 export * from "./events/project-updated-event";
+export * from "./events/user-created-event";
