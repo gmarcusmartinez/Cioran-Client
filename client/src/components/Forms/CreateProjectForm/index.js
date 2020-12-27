@@ -4,7 +4,6 @@ import Spinner from "components/Common/Spinner";
 
 const CreateProjectForm = () => {
   const [formData, setFormData] = React.useState({ title: "", slug: "" });
-  const { title, slug } = formData;
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.targetvalue });
@@ -25,7 +24,7 @@ const CreateProjectForm = () => {
         label="Project Title"
         name="title"
         required={true}
-        value={title}
+        value={formData.title}
         onChange={handleChange}
         // error={setError("title")}
       />
@@ -33,7 +32,7 @@ const CreateProjectForm = () => {
         label="Project Slug"
         name="slug"
         required={true}
-        value={slug}
+        value={formData.slug}
         onChange={handleChange}
         info="Slug should be between 4 and 6 characters"
         // error={setError("slug")}

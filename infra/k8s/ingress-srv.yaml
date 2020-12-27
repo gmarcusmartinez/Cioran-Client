@@ -18,9 +18,9 @@ spec:
             backend:
               serviceName: cioran-projects-srv
               servicePort: 3000
-          - path: /api/orders/?(.*)
+          - path: /api/sprints/?(.*)
             backend:
-              serviceName: cioran-orders-srv
+              serviceName: cioran-sprints-srv
               servicePort: 3000
           - path: /?(.*)
             backend:

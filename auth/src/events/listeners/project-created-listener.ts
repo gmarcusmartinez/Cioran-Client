@@ -1,9 +1,5 @@
-import {
-  ProjectCreatedEvent,
-  Subjects,
-  Listener,
-  BadRequestError,
-} from "@cioran/common";
+import { ProjectCreatedEvent, Subjects, Listener } from "@cioran/common";
+import { BadRequestError } from "@cioran/common";
 import { Message } from "node-nats-streaming";
 import { Project } from "../../models/Project";
 import { User } from "../../models/User";

@@ -5,7 +5,7 @@ import buildClient from "api/build-client";
 
 const headerText = "Cioran";
 const slogan =
-  "Plan, track, and manage your agile and software development projects in Cioran. Customize your workflow, collaborate, and release greatsoftware.";
+  "Plan, track, and manage your agile and software development projects with Cioran. Customize your workflow, collaborate, and release great software.";
 
 const LandingPage = ({ currentUser }) => {
   const router = useRouter();
