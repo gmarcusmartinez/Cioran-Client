@@ -30,8 +30,6 @@ const Signup = ({ setFormDisplay }) => {
 
   const handleSetFormDisplay = () => setFormDisplay("RENDER_SIGNIN");
 
-  const { name, email, password } = formData;
-
   return (
     <div className="auth-card">
       <form className="signup-form" onSubmit={handleSubmit}>
@@ -39,14 +37,14 @@ const Signup = ({ setFormDisplay }) => {
         <AuthInput
           placeholder="Name"
           name="name"
-          value={name}
+          value={formData.name}
           onChange={handleChange}
           error={setError("name")}
         />
         <AuthInput
           placeholder="Email"
           name="email"
-          value={email}
+          value={formData.email}
           onChange={handleChange}
           error={setError("email")}
         />
@@ -54,7 +52,7 @@ const Signup = ({ setFormDisplay }) => {
           placeholder="Password"
           type="password"
           name="password"
-          value={password}
+          value={formData.password}
           onChange={handleChange}
           error={setError("password")}
         />

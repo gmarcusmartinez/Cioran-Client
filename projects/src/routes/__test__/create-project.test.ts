@@ -59,12 +59,6 @@ describe("Successful Project Creation", () => {
   const slug = "TEST";
 
   it("returns a project with valid form inputs", async () => {
-    const mockUser = await User.build({
-      name: "Marcus Martinez",
-      avatar: "picture.jpg",
-    });
-    mockUser.id = new mongoose.Types.ObjectId().toHexString();
-
     let projects = await Project.find({});
     expect(projects.length).toEqual(0);
 

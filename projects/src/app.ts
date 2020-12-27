@@ -4,7 +4,7 @@ import cookieSession from "cookie-session";
 
 import { createProjectRouter } from "./routes/create-project";
 import { updateProjectRouter } from "./routes/update-project";
-import { NotFoundError, errorHandler } from "@cioran/common";
+import { NotFoundError, errorHandler, currentUser } from "@cioran/common";
 
 const app = express();
 app.set("trust proxy", true);
@@ -17,6 +17,7 @@ app.use(
   })
 );
 
+app.use(currentUser);
 app.use(createProjectRouter);
 app.use(updateProjectRouter);
 

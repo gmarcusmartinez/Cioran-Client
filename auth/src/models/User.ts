@@ -17,6 +17,7 @@ interface UserDoc extends mongoose.Document {
   avatar: string;
   projects: ProjectDoc[];
   getSignedJwtToken(): string;
+  addProject(project: ProjectDoc): void;
 }
 
 interface UserModel extends mongoose.Model<UserDoc> {
@@ -29,7 +30,12 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true },
     password: { type: String, required: true },
     avatar: { type: String, default: "" },
-    projects: [{ type: mongoose.Schema.Types.ObjectId, ref: "Project" }],
+    projects: [
+      {
+        id: { type: mongoose.Schema.Types.ObjectId, ref: "Project" },
+        title: { type: String, required: true },
+      },
+    ],
   },
   {
     toJSON: {
@@ -56,6 +62,11 @@ userSchema.pre("save", async function (done) {
 userSchema.methods.getSignedJwtToken = function () {
   const { id, email } = this;
   return jwt.sign({ id, email }, process.env.JWT_KEY!);
+};
+
+userSchema.methods.addProject = function (project: ProjectDoc) {
+  const { projects } = this;
+  return projects.push(project);
 };
 
 const User = mongoose.model<UserDoc, UserModel>("User", userSchema);
