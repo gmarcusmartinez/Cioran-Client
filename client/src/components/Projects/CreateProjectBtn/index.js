@@ -14,8 +14,7 @@ const CreateProjectBtn = ({ toggleModal }) => {
       className="create-project-btn"
       onClick={() => toggleModal(modalParams)}
     >
-      Create Project
-      <span className="plus">+</span>
+      <span className="create-project-btn__text">Create Project</span>
     </div>
   );
 };

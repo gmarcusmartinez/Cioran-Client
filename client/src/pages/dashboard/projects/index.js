@@ -1,4 +1,5 @@
 import CreateProjectBtn from "components/Projects/CreateProjectBtn";
+import ProjectsPaginator from "components/Projects/Paginator";
 import DashboardLayout from "layouts/DashboardLayout";
 
 const ProjectConsole = () => {
@@ -7,6 +8,7 @@ const ProjectConsole = () => {
       <div className="project-console__title">My Projects</div>
       <div className="polygon-border" />
       <CreateProjectBtn />
+      <ProjectsPaginator />
     </div>
   );
 };
