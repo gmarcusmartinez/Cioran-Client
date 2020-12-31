@@ -1,10 +1,10 @@
 import { Subjects } from "../subjects";
 
 export interface TeamMember {
-  id: String;
-  name: String;
-  avatar: String;
-  role: String;
+  id: string;
+  name: string;
+  avatar: string;
+  role: string;
 }
 
 export interface ProjectCreatedEvent {

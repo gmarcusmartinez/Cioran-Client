@@ -1,5 +1,5 @@
 import { Subjects } from "../subjects";
-interface teamMember {
+export interface TeamMember {
     id: String;
     name: String;
     avatar: String;
@@ -11,8 +11,7 @@ export interface ProjectCreatedEvent {
         id: string;
         title: string;
         slug: string;
-        team: teamMember[];
+        team: TeamMember[];
         projectOwner: string;
     };
 }
-export {};
