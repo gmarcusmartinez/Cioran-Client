@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cioran-projects-depl
+  name: projects-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cioran-projects
+      app: projects
   template:
     metadata:
       labels:
-        app: cioran-projects
+        app: projects
     spec:
       containers:
-        - name: cioran-projects
+        - name: projects
           image: gmarcusmartinez/cioran-projects
           env:
             - name: MONGO_URI
-              value: "mongodb://cioran-projects-mongo-srv:27017/projects"
+              value: "mongodb://projects-mongo-srv:27017/projects"
             - name: NATS_URL
               value: "http://nats-srv:4222"
             - name: NATS_CLUSTER_ID
@@ -35,12 +35,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cioran-projects-srv
+  name: projects-srv
 spec:
   selector:
-    app: cioran-projects
+    app: projects
   ports:
-    - name: cioran-projects
+    - name: projects
       protocol: TCP
       port: 3000
       targetPort: 3000

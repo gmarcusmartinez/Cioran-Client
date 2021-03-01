@@ -14,10 +14,10 @@ spec:
             backend:
               serviceName: auth-srv
               servicePort: 3000
-          # - path: /api/projects/?(.*)
-          #   backend:
-          #     serviceName: cioran-projects-srv
-          #     servicePort: 3000
+          - path: /api/projects/?(.*)
+            backend:
+              serviceName: projects-srv
+              servicePort: 3000
           # - path: /api/sprints/?(.*)
           #   backend:
           #     serviceName: cioran-sprints-srv

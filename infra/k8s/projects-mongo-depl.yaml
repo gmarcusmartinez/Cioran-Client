@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cioran-projects-mongo-depl
+  name: projects-mongo-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cioran-projects-mongo
+      app: projects-mongo
   template:
     metadata:
       labels:
-        app: cioran-projects-mongo
+        app: projects-mongo
     spec:
       containers:
-        - name: cioran-projects-mongo
+        - name: projects-mongo
           image: mongo:4.4.2
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: cioran-projects-mongo-srv
+  name: projects-mongo-srv
 spec:
   selector:
-    app: cioran-projects-mongo
+    app: projects-mongo
   ports:
     - name: db
       protocol: TCP
