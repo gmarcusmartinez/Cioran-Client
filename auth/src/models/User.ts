@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
-import mongoose from "mongoose";
-import { PasswordManager } from "../services/PasswordManager";
-import { ProjectDoc } from "./Project";
+import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
+import { PasswordManager } from '../services/PasswordManager';
+import { ProjectDoc, projectSchema } from './Project';
 
 interface UserAttrs {
   name: string;
@@ -24,18 +24,13 @@ interface UserModel extends mongoose.Model<UserDoc> {
   build(attrs: UserAttrs): UserDoc;
 }
 
-const userSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema<UserDoc>(
   {
     name: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    avatar: { type: String, default: "" },
-    projects: [
-      {
-        id: { type: mongoose.Schema.Types.ObjectId, ref: "Project" },
-        title: { type: String, required: true },
-      },
-    ],
+    avatar: { type: String, default: '' },
+    projects: [projectSchema],
   },
   {
     toJSON: {
@@ -51,10 +46,10 @@ const userSchema = new mongoose.Schema(
 
 userSchema.statics.build = (attrs: UserAttrs) => new User(attrs);
 
-userSchema.pre("save", async function (done) {
-  if (this.isModified("password")) {
-    const hashed = await PasswordManager.toHash(this.get("password"));
-    this.set("password", hashed);
+userSchema.pre('save', async function (done) {
+  if (this.isModified('password')) {
+    const hashed = await PasswordManager.toHash(this.get('password'));
+    this.set('password', hashed);
   }
   done();
 });
@@ -69,6 +64,5 @@ userSchema.methods.addProject = function (project: ProjectDoc) {
   return projects.push(project);
 };
 
-const User = mongoose.model<UserDoc, UserModel>("User", userSchema);
-
+const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
 export { User };

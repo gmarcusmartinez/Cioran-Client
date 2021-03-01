@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cioran-auth-mongo-depl
+  name: auth-mongo-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cioran-auth-mongo
+      app: auth-mongo
   template:
     metadata:
       labels:
-        app: cioran-auth-mongo
+        app: auth-mongo
     spec:
       containers:
-        - name: cioran-auth-mongo
+        - name: auth-mongo
           image: mongo:4.4.2
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: cioran-auth-mongo-srv
+  name: auth-mongo-srv
 spec:
   selector:
-    app: cioran-auth-mongo
+    app: auth-mongo
   ports:
     - name: db
       protocol: TCP

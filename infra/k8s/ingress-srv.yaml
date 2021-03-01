@@ -12,17 +12,17 @@ spec:
         paths:
           - path: /api/auth/?(.*)
             backend:
-              serviceName: cioran-auth-srv
+              serviceName: auth-srv
               servicePort: 3000
-          - path: /api/projects/?(.*)
-            backend:
-              serviceName: cioran-projects-srv
-              servicePort: 3000
-          - path: /api/sprints/?(.*)
-            backend:
-              serviceName: cioran-sprints-srv
-              servicePort: 3000
-          - path: /?(.*)
-            backend:
-              serviceName: cioran-client-srv
-              servicePort: 3000
+          # - path: /api/projects/?(.*)
+          #   backend:
+          #     serviceName: cioran-projects-srv
+          #     servicePort: 3000
+          # - path: /api/sprints/?(.*)
+          #   backend:
+          #     serviceName: cioran-sprints-srv
+          #     servicePort: 3000
+          # - path: /?(.*)
+          #   backend:
+          #     serviceName: cioran-client-srv
+          #     servicePort: 3000

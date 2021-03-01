@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 interface ProjectAttrs {
   id: string;
@@ -14,29 +14,24 @@ interface ProjectModel extends mongoose.Model<ProjectDoc> {
   build(attrs: ProjectAttrs): ProjectDoc;
 }
 
-const projectSchema = new mongoose.Schema(
+export const projectSchema = new mongoose.Schema(
   {
-    title: {
-      type: String,
-      required: true,
-      trim: true,
-    },
+    id: { type: String, required: true },
+    title: { type: String, required: true },
   },
   {
     toJSON: {
       transform(doc, ret) {
-        ret.id = ret._id;
         delete ret._id;
       },
     },
   }
 );
 
-projectSchema.statics.build = (attrs: ProjectAttrs) => {
-  return new Project(attrs);
-};
+projectSchema.statics.build = (attrs: ProjectAttrs) => new Project(attrs);
+
 const Project = mongoose.model<ProjectDoc, ProjectModel>(
-  "Project",
+  'Project',
   projectSchema
 );
 

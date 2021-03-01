@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cioran-auth-depl
+  name: auth-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cioran-auth
+      app: auth
   template:
     metadata:
       labels:
-        app: cioran-auth
+        app: auth
     spec:
       containers:
-        - name: cioran-auth
+        - name: auth
           image: gmarcusmartinez/cioran-auth
           env:
             - name: MONGO_URI
-              value: "mongodb://cioran-auth-mongo-srv:27017/auth"
+              value: "mongodb://auth-mongo-srv:27017/auth"
             - name: NATS_URL
               value: "http://nats-srv:4222"
             - name: NATS_CLUSTER_ID
@@ -35,12 +35,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cioran-auth-srv
+  name: auth-srv
 spec:
   selector:
-    app: cioran-auth
+    app: auth
   ports:
-    - name: cioran-auth
+    - name: auth
       protocol: TCP
       port: 3000
       targetPort: 3000

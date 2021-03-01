@@ -16,27 +16,27 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
-    - image: gmarcusmartinez/cioran-client
-      context: client
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: "src/**/*.js"
-            dest: .
-    - image: gmarcusmartinez/cioran-projects
-      context: projects
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: "src/**/*.js"
-            dest: .
-    - image: gmarcusmartinez/cioran-sprints
-      context: sprints
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: "src/**/*.js"
-            dest: .
+    # - image: gmarcusmartinez/cioran-client
+    #   context: client
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: "src/**/*.js"
+    #         dest: .
+    # - image: gmarcusmartinez/cioran-projects
+    #   context: projects
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: "src/**/*.js"
+    #         dest: .
+    # - image: gmarcusmartinez/cioran-sprints
+    #   context: sprints
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: "src/**/*.js"
+    #         dest: .
