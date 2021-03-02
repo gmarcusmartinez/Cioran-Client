@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
 import { Project } from '../models/Project';
 import { User } from '../models/User';
-import { RoleType } from '../models/TeamMember';
 import { natsWrapper } from '../nats-wrapper';
 import { ProjectCreatedPublisher } from '../events/publishers/project-created-publisher';
-import { BadRequestError } from '@cioran/common/build';
+import { BadRequestError, RoleType } from '@cioran/common/build';
 
 export const createProject = async (req: Request, res: Response) => {
   const { title, slug } = req.body;
@@ -25,5 +24,4 @@ export const createProject = async (req: Request, res: Response) => {
     team: project.team,
   });
   res.status(201).send(project);
-  console.log(project);
 };

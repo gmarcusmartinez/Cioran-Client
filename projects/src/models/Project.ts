@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { UserDoc } from './User';
-import { RoleType, TeamMember } from './TeamMember';
+import { TeamMember, RoleType } from '@cioran/common/build';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
 interface ProjectAttrs {
@@ -29,10 +29,10 @@ const projectSchema = new mongoose.Schema<ProjectDoc>(
     projectOwner: { type: String, required: true },
     team: [
       {
-        id: { type: String, required: true },
+        _id: { type: String, required: true },
         name: { type: String, required: true },
-        avatar: { type: String, default: '' },
-        role: { type: String },
+        avatar: { type: String },
+        role: { type: String, required: true },
       },
     ],
   },
@@ -51,9 +51,8 @@ projectSchema.plugin(updateIfCurrentPlugin);
 projectSchema.statics.build = (attrs: ProjectAttrs) => new Project(attrs);
 
 projectSchema.methods.assignRole = function (user: UserDoc, role: RoleType) {
-  const { id, name, avatar } = user;
-  const teamMember = { id, name, avatar, role };
-  return this.team.push(teamMember);
+  const { name, avatar } = user;
+  this.team.push({ name, avatar, role, _id: user.id });
 };
 
 const Project = mongoose.model<ProjectDoc, ProjectModel>(

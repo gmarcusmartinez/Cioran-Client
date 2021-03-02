@@ -11,7 +11,6 @@ export class UserCreatedListener extends Listener<UserCreatedEvent> {
     const { id, name, avatar } = data;
     const user = User.build({ id, name, avatar });
     await user.save();
-    console.log(user);
     msg.ack();
   }
 }
