@@ -1,38 +1,13 @@
-import styles from '../styles/global.scss';
-// import { Provider } from 'react-redux';
-// import { useStore } from 'store';
-// import buildClient from "api/build-client";
+import '../styles/global.scss';
+import { Provider } from 'react-redux';
+import { useStore } from '../state';
 
-const AppComponent = ({ Component, pageProps }) => {
-  //   const store = useStore(pageProps.initialReduxState);
-  //   const Layout = Component.Layout || EmptyLayout;
+export default function App({ Component, pageProps }) {
+  const store = useStore(pageProps.initialReduxState);
 
-  return <Component {...pageProps} />;
-};
-
-AppComponent.getInitialProps = async ({ Component, ctx }) => {
-  // const client = buildClient(ctx);
-  // const { data } = await client.get("/api/auth/currentuser");
-
-  const pageProps = {
-    ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
-  };
-
-  return {
-    pageProps,
-    //  data
-  };
-};
-
-export default AppComponent;
-
-function EmptyLayout({ children }) {
-  return <>{children}</>;
-}
-
-/**
- *   <Provider store={store}>
-      <Layout>
-      </Layout>
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
     </Provider>
- */
+  );
+}

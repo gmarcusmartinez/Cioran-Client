@@ -1,35 +1,33 @@
 import React from 'react';
-import { AuthCard } from '../components/Auth';
 import { useRouter } from 'next/router';
+import { useActions } from '../hooks/use-actions';
+import { Modal } from '../components/Modal';
 // import buildClient from "api/build-client";
-
-const headerText = 'Cioran';
-const slogan =
-  'Plan, track, and manage your agile and software development projects with Cioran. Customize your workflow, collaborate, and release great software.';
 
 const LandingPage = ({ currentUser }) => {
   const router = useRouter();
+  const { toggleModal } = useActions();
+  const handleToggleModal = () => toggleModal(true, '');
 
   React.useEffect(() => {
     if (currentUser) router.push('/dashboard/projects');
   }, []);
 
   return (
-    <div className='landing-page'>
-      <div className='hero'>
-        <div className='hero__header'>
-          <h1 className='header-logo'>{headerText}</h1>
-          <h1 className='header-slogan'>{slogan}</h1>
-        </div>
-        <div className='hero__display'>
-          <div className='hero__logo'>{headerText}</div>
-          <p className='hero__slogan'>{slogan}</p>
-        </div>
-        <div className='hero__auth'>
-          <AuthCard />
+    <>
+      <div className='landing-page'>
+        <div className='landing-page__container'>
+          <span>Cioran</span>
+          <span>
+            Plan, track, and manage your agile and software development projects
+            with Cioran. Customize your workflow, collaborate, and release great
+            software.
+          </span>
+          <button onClick={handleToggleModal}>Get Started</button>
         </div>
       </div>
-    </div>
+      <Modal />
+    </>
   );
 };
 
