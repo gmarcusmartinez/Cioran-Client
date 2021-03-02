@@ -1,0 +1,27 @@
+.auth-input {
+  align-self: center;
+  background-color: var(--color-dark-theme-secondary);
+  color: var(--color-grey-light);
+  font-size: 1.4rem;
+  letter-spacing: var(--letter-spacing-sm);
+  margin: 0 5%;
+  padding-left: 0.6rem;
+
+  height: 4rem;
+  width: 90%;
+
+  border: none;
+  border-bottom: 0.1rem solid var(--color-dark-theme-light);
+  outline: none;
+
+  &:focus {
+    border-bottom: 0.2rem solid var(--color-primary-light);
+    transition: var(--transition-fast);
+  }
+}
+.input-error {
+  color: var(--color-red);
+  font-size: 1.4rem;
+  letter-spacing: var(--letter-spacing-sm);
+  padding-left: calc(5% + 0.6rem);
+}

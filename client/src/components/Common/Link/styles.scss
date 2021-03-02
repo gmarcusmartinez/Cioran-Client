@@ -1,0 +1,6 @@
+.selected {
+  color: var(--color-primary-light) !important;
+  &:hover {
+    color: var(--color-grey-light) !important;
+  }
+}

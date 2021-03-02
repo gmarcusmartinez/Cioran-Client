@@ -1,0 +1,27 @@
+@import "./abstracts/mixins.scss";
+@import "./abstracts/animations.scss";
+@import "./base/base.scss";
+@import "./components/btn.scss";
+@import "./pages/Landing.scss";
+
+@import "components/Auth/styles.scss";
+@import "components/Auth/AuthInput/styles.scss";
+@import "components/Auth/Signin/styles.scss";
+@import "components/Auth/Signup/styles.scss";
+
+@import "components/Common/Link/styles.scss";
+@import "components/Common/Modal/styles.scss";
+@import "components/Common/Spinner/styles.scss";
+
+@import "components/Dashboard/MenuBars/styles.scss";
+@import "components/Dashboard/MobileNavigation/styles.scss";
+@import "components/Dashboard/Navigation/styles.scss";
+
+@import "components/Inputs/Text/styles.scss";
+@import "components/Forms/CreateProjectForm/styles.scss";
+
+@import "../components/Projects/CreateProjectBtn/styles.scss";
+@import "../components/Projects/Paginator/styles.scss";
+
+@import "layouts/styles.scss";
+@import "pages/dashboard/projects/styles.scss";
