@@ -1,10 +1,15 @@
 import { Subjects } from '../subjects';
 
+export enum RoleType {
+  Admin = 'admin',
+  Member = 'member',
+}
+
 export interface TeamMember {
   _id: string;
   name: string;
   avatar: string;
-  role: string;
+  role: RoleType;
 }
 
 export interface ProjectCreatedEvent {
