@@ -1,0 +1,20 @@
+.signin-form {
+  height: 42rem;
+  display: grid;
+  grid-template-rows: 20% 20% 20% 25% 15%;
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 300;
+    align-self: center;
+
+    letter-spacing: var(--letter-spacing-md);
+    text-align: center;
+  }
+  &__btn {
+    align-self: center;
+    letter-spacing: var(--letter-spacing-sm);
+    margin: 0 2.5%;
+    width: 95%;
+  }
+}

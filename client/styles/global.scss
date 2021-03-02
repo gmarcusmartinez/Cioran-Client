@@ -1,0 +1,11 @@
+@import './abstracts/mixins.scss';
+@import './abstracts/animations.scss';
+@import './base/base.scss';
+@import './components/btn.scss';
+
+@import '../components/Auth/styles.scss';
+@import '../components/Auth/AuthInput/styles.scss';
+@import '../components/Auth/Signin/styles.scss';
+@import '../components/Auth/Signup/styles.scss';
+
+@import './pages/Landing.scss';
