@@ -1,7 +1,7 @@
-import { Subjects } from "../subjects";
+import { Subjects } from '../subjects';
 
 export interface TeamMember {
-  id: string;
+  _id: string;
   name: string;
   avatar: string;
   role: string;
