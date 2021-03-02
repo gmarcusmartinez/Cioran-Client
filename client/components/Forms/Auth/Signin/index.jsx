@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import Router from 'next/router';
-import AuthInput from '../AuthInput';
-import useRequest from '../../../hooks/use-request';
+import useRequest from '../../../../hooks/use-request';
+import Text from '../../../CustomInputs/Text';
 
-const Signin = ({ setFormDisplay }) => {
+export const Signin = ({ setFormDisplay }) => {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const handleSetFormDisplay = () => setFormDisplay('RENDER_SIGNUP');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,36 +27,32 @@ const Signin = ({ setFormDisplay }) => {
   const setError = (field) =>
     errors ? errors.find((err) => err.field === field) : null;
 
-  const handleSetFormDisplay = () => setFormDisplay('RENDER_SIGNUP');
-  const { email, password } = formData;
-
   return (
-    <div className='auth-card'>
+    <div className='auth-form'>
       <form className='signin-form' onSubmit={handleSubmit}>
-        <h2 className='signin-form__title'>Signin To Your Account</h2>
-        <AuthInput
-          placeholder='Email'
+        <h3>Signin To Your Account</h3>
+        <Text
+          label='Email'
           name='email'
-          value={email}
+          required={true}
+          value={formData.email}
           onChange={handleChange}
-          error={setError('email')}
+          // error={setError("title")}
         />
-        <AuthInput
-          placeholder='Password'
-          type='password'
+        <Text
+          label='Password'
           name='password'
-          value={password}
+          required={true}
+          value={formData.password}
           onChange={handleChange}
-          error={setError('password')}
+          // error={setError("slug")}
         />
-        <button className='signin-form__btn btn-primary'>Signin</button>
+        <button className='btn-primary'>Signin</button>
         <div className='set-form-display'>
-          Dont have an account?
+          <span>Dont have an account? </span>
           <span onClick={handleSetFormDisplay}>Signup</span>
         </div>
       </form>
     </div>
   );
 };
-
-export default Signin;

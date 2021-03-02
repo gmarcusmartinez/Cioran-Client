@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Signin from './Signin';
-import Signup from './Signup';
+import { Signin } from './Signin';
+import { Signup } from './Signup';
 
-export const AuthCard = () => {
-  const [formDisplay, setFormDisplay] = useState('RENDER_SIGNIN');
+export const AuthForm = () => {
+  const [formDisplay, setFormDisplay] = useState('RENDER_SIGNUP');
 
   const renderContent = () => {
     switch (formDisplay) {

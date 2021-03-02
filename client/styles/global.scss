@@ -3,10 +3,12 @@
 @import './base/base.scss';
 @import './components/btn.scss';
 
-@import '../components/Auth/styles.scss';
-@import '../components/Auth/AuthInput/styles.scss';
-@import '../components/Auth/Signin/styles.scss';
-@import '../components/Auth/Signup/styles.scss';
+@import '../components/CustomInputs/Text/styles.scss';
+
+@import '../components/Forms/Auth/styles.scss';
+@import '../components/Forms/Auth/Signin/styles.scss';
+@import '../components/Forms/Auth/Signup/styles.scss';
+
 @import '../components/Modal/styles.scss';
 
 @import './pages/Landing.scss';

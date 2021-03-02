@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import Router from 'next/router';
-import AuthInput from '../AuthInput';
-import useRequest from '../../../hooks/use-request';
+import useRequest from '../../../../hooks/use-request';
+import Text from '../../../CustomInputs/Text';
 
-const defaultForm = { name: '', email: '', password: '' };
-
-const Signup = ({ setFormDisplay }) => {
+export const Signup = ({ setFormDisplay }) => {
+  const defaultForm = { name: '', email: '', password: '' };
   const [formData, setFormData] = useState(defaultForm);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const { doRequest, errors } = useRequest({
     url: '/api/auth/signup',
@@ -14,11 +18,6 @@ const Signup = ({ setFormDisplay }) => {
     body: formData,
     onSuccess: () => Router.push('/dashboard/projects'),
   });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,39 +30,39 @@ const Signup = ({ setFormDisplay }) => {
   const handleSetFormDisplay = () => setFormDisplay('RENDER_SIGNIN');
 
   return (
-    <div className='auth-card'>
+    <div className='auth-form'>
       <form className='signup-form' onSubmit={handleSubmit}>
-        <h2 className='signup-form__title'>Create Your Account</h2>
-        <AuthInput
-          placeholder='Name'
+        <h3>Create Your Account</h3>
+        <Text
+          label='Name'
           name='name'
+          required={true}
           value={formData.name}
           onChange={handleChange}
-          error={setError('name')}
+          // error={setError("title")}
         />
-        <AuthInput
-          placeholder='Email'
+        <Text
+          label='Email'
           name='email'
+          required={true}
           value={formData.email}
           onChange={handleChange}
-          error={setError('email')}
+          // error={setError("title")}
         />
-        <AuthInput
-          placeholder='Password'
-          type='password'
+        <Text
+          label='Password'
           name='password'
+          required={true}
           value={formData.password}
           onChange={handleChange}
-          error={setError('password')}
+          // error={setError("slug")}
         />
-        <button className='signup-form__btn btn-primary'>Get Started!</button>
+        <button className='btn-primary'>Signup</button>
         <div className='set-form-display'>
-          Already have an account?
+          <span>Already have an account? </span>
           <span onClick={handleSetFormDisplay}>Signin</span>
         </div>
       </form>
     </div>
   );
 };
-
-export default Signup;

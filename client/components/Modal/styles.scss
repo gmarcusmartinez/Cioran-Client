@@ -1,5 +1,5 @@
 .modal {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.95);
 
   height: 100%;
   width: 100%;
@@ -21,6 +21,7 @@
   }
   &__body {
     display: flex;
+    justify-content: center;
     height: 75vh;
   }
 
@@ -53,11 +54,7 @@
       transform: rotate(45deg) translate(-7px, -8px);
     }
   }
-  @include respond(tablet) {
-    &__body {
-      width: 32rem;
-    }
-  }
+
   @include respond(desktop) {
     &.closed {
       transform: translateX(-100vw);

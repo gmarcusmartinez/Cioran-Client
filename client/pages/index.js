@@ -7,7 +7,7 @@ import { Modal } from '../components/Modal';
 const LandingPage = ({ currentUser }) => {
   const router = useRouter();
   const { toggleModal } = useActions();
-  const handleToggleModal = () => toggleModal(true, '');
+  const handleToggleModal = () => toggleModal(true, 'AUTH_FORM');
 
   React.useEffect(() => {
     if (currentUser) router.push('/dashboard/projects');
