@@ -10,5 +10,9 @@
 @import '../components/Forms/Auth/Signup/styles.scss';
 
 @import '../components/Modal/styles.scss';
+@import '../components/Navigation/styles.scss';
+
+@import 'layouts/Dashboard/styles.scss';
 
 @import './pages/Landing.scss';
+@import '../pages/dashboard/projects/styles.scss';
