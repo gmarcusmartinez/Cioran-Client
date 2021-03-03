@@ -13,6 +13,23 @@
     position: relative;
     height: 100vh;
     width: 100vw;
+    &__content {
+      &-header {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 12rem;
+        padding: 0 var(--padding-md);
+        h3 {
+          color: var(--color-grey-light);
+          font-size: 2rem;
+          letter-spacing: var(--letter-spacing-md);
+          margin-bottom: var(--margin-sm);
+          margin-left: var(--margin-sm);
+          transition: 0.2s;
+        }
+      }
+    }
     @include respond(desktop) {
       display: grid;
       grid-template-columns: 26rem auto;

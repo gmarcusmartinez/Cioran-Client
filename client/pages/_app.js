@@ -5,7 +5,6 @@ import { useStore } from '../state';
 export default function App({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
   const Layout = Component.Layout || EmptyLayout;
-
   return (
     <Provider store={store}>
       <Layout>
