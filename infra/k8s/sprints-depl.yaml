@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cioran-sprints-depl
+  name: sprints-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cioran-sprints
+      app: sprints
   template:
     metadata:
       labels:
-        app: cioran-sprints
+        app: sprints
     spec:
       containers:
-        - name: cioran-sprints
+        - name: sprints
           image: gmarcusmartinez/cioran-sprints
           env:
             - name: MONGO_URI
-              value: "mongodb://cioran-sprints-mongo-srv:27017/sprints"
+              value: "mongodb://sprints-mongo-srv:27017/sprints"
             - name: NATS_URL
               value: "http://nats-srv:4222"
             - name: NATS_CLUSTER_ID
@@ -35,12 +35,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: cioran-sprints-srv
+  name: sprints-srv
 spec:
   selector:
-    app: cioran-sprints
+    app: sprints
   ports:
-    - name: cioran-sprints
+    - name: sprints
       protocol: TCP
       port: 3000
       targetPort: 3000
