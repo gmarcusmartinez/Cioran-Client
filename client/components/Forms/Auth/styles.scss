@@ -1,5 +1,5 @@
 .auth-form {
-  animation: 0.25s ease-out slideInFromRight;
+  animation: 0.25s ease-out slide-in-from-right;
   background-color: transparent;
   width: 32rem;
   display: flex;
@@ -25,12 +25,30 @@
     }
   }
 }
+.signin-form {
+  @include default-form;
+  display: grid;
+  grid-template-rows: 6rem 10rem 10rem 6rem 6rem;
+  width: 32rem;
+  @include respond(tablet) {
+    width: 30rem;
+  }
+  h3 {
+    letter-spacing: var(--letter-spacing-md);
+  }
+  align-items: center;
+}
 
-@keyframes slideInFromRight {
-  0% {
-    transform: translateX(50px);
+.signup-form {
+  @include default-form;
+  display: grid;
+  grid-template-rows: 6rem 9rem 9rem 9rem 6rem 6rem;
+  width: 32rem;
+  @include respond(tablet) {
+    width: 30rem;
   }
-  100% {
-    transform: translateX(0);
+  h3 {
+    letter-spacing: var(--letter-spacing-md);
   }
+  align-items: center;
 }

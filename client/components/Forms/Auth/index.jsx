@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Signin } from './Signin';
-import { Signup } from './Signup';
+import { Signin } from './signin';
+import { Signup } from './signup';
 
 export const AuthForm = () => {
   const [formDisplay, setFormDisplay] = useState('RENDER_SIGNUP');

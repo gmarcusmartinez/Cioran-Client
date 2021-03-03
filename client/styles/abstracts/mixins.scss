@@ -59,6 +59,7 @@
 }
 
 .polygon-border {
+  animation: grow-border 0.2s ease-in-out;
   background-color: var(--color-primary-light);
   clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%);
   height: 0.8rem;

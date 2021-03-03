@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Router from 'next/router';
-import useRequest from '../../../../hooks/use-request';
-import Text from '../../../CustomInputs/Text';
+import useRequest from '../../../hooks/use-request';
+import Text from '../../CustomInputs/Text';
 
 export const Signup = ({ setFormDisplay }) => {
   const defaultForm = { name: '', email: '', password: '' };

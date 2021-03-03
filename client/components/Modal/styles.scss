@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 4;
   &.open {
     transition: all 0.3s;
     transform: translateX(0);

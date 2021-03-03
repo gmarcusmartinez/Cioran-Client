@@ -1,14 +1,15 @@
 import React from 'react';
-import { useActions } from '../../../hooks/use-actions';
 import { DashboardLayout } from '../../../layouts/Dashboard';
 
 const Settings = () => {
-  const { setTitle } = useActions();
-
-  React.useEffect(() => {
-    setTitle('Settings');
-  });
-  return <div className='settings'></div>;
+  return (
+    <div className='settings'>
+      <div className='dashboard__content-header'>
+        <h3>Settings</h3>
+        <div className='polygon-border' />
+      </div>
+    </div>
+  );
 };
 
 Settings.Layout = DashboardLayout;

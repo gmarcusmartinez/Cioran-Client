@@ -19,14 +19,13 @@
         justify-content: center;
         flex-direction: column;
         height: 12rem;
-        padding: 0 var(--padding-md);
         h3 {
+          animation: slide-left 0.4s;
           color: var(--color-grey-light);
           font-size: 2rem;
           letter-spacing: var(--letter-spacing-md);
           margin-bottom: var(--margin-sm);
           margin-left: var(--margin-sm);
-          transition: 0.2s;
         }
       }
     }

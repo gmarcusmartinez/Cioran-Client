@@ -1,0 +1,13 @@
+.create-project-form {
+  @include default-form;
+  display: grid;
+  grid-template-rows: 6rem 12rem 12rem 10rem;
+  width: 32rem;
+  @include respond(tablet) {
+    width: 30rem;
+  }
+  align-items: center;
+  h3 {
+    align-self: flex-end;
+  }
+}

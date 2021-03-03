@@ -52,3 +52,30 @@ $nav-link-animation-z-index: -1;
     width: 100%;
   }
 }
+
+@keyframes slide-in-from-right {
+  0% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes grow-border {
+  from {
+    width: 0;
+  }
+  to {
+    width: 30rem;
+  }
+}
+
+@keyframes slide-left {
+  from {
+    transform: translateX(10px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

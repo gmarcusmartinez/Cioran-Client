@@ -4,11 +4,8 @@
 @import './components/btn.scss';
 
 @import '../components/CustomInputs/Text/styles.scss';
-
 @import '../components/Forms/Auth/styles.scss';
-@import '../components/Forms/Auth/Signin/styles.scss';
-@import '../components/Forms/Auth/Signup/styles.scss';
-
+@import '../components/Forms/CreateProject/styles.scss';
 @import '../components/Modal/styles.scss';
 @import '../components/Navigation/styles.scss';
 
@@ -16,3 +13,6 @@
 
 @import './pages/Landing.scss';
 @import '../pages/dashboard/projects/styles.scss';
+@import '../pages/dashboard/my-queue/styles.scss';
+@import '../pages/dashboard/inbox/styles.scss';
+@import '../pages/dashboard/settings/styles.scss';
