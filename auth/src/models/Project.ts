@@ -12,7 +12,7 @@ interface ProjectModel extends mongoose.Model<ProjectDoc> {
   build(attrs: ProjectAttrs): ProjectDoc;
 }
 
-export const projectSchema = new mongoose.Schema(
+const projectSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
   },
@@ -27,7 +27,8 @@ export const projectSchema = new mongoose.Schema(
   }
 );
 
-projectSchema.statics.build = (attrs: ProjectAttrs) => new Project(attrs);
+projectSchema.statics.build = (attrs: ProjectAttrs) =>
+  new Project({ _id: attrs.id, title: attrs.title });
 
 const Project = mongoose.model<ProjectDoc, ProjectModel>(
   'Project',

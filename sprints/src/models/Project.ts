@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-import { updateIfCurrentPlugin } from "mongoose-update-if-current";
-import { TeamMember } from "@cioran/common";
+import mongoose from 'mongoose';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
+import { TeamMember } from '@cioran/common';
 
 interface ProjectAttrs {
   id: string;
@@ -8,7 +8,6 @@ interface ProjectAttrs {
 }
 
 export interface ProjectDoc extends mongoose.Document {
-  id: string;
   team: TeamMember[];
 }
 
@@ -20,7 +19,7 @@ const projectSchema = new mongoose.Schema(
   {
     team: [
       {
-        id: { type: String, required: true },
+        _id: { type: String, required: true },
         name: { type: String, required: true },
         avatar: { type: String },
         role: { type: String, required: true },
@@ -38,14 +37,14 @@ const projectSchema = new mongoose.Schema(
   }
 );
 
-projectSchema.set("versionKey", "version");
+projectSchema.set('versionKey', 'version');
 projectSchema.plugin(updateIfCurrentPlugin);
 
 projectSchema.statics.build = (attrs: ProjectAttrs) =>
   new Project({ _id: attrs.id, team: attrs.team });
 
 const Project = mongoose.model<ProjectDoc, ProjectModel>(
-  "Project",
+  'Project',
   projectSchema
 );
 
