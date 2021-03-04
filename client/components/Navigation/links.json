@@ -17,6 +17,6 @@
   },
   {
     "text": "signout",
-    "to": "/signout"
+    "to": "/dashboard/signout"
   }
 ]

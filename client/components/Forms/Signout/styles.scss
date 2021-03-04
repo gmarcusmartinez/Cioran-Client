@@ -1,0 +1,15 @@
+.signout__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 330px;
+  span {
+    color: var(--color-grey-light);
+    font-size: 1.4rem;
+    height: 4rem;
+    letter-spacing: var(--letter-spacing-lg);
+    margin-top: 10rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+}
