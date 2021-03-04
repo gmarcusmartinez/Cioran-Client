@@ -18,8 +18,8 @@ export class ProjectCreatedListener extends Listener<ProjectCreatedEvent> {
     const user = await User.findById(projectOwner);
     if (!user) throw new BadRequestError('User not found');
     user.addProject(project);
-    await user.save();
 
+    await user.save();
     msg.ack();
   }
 }

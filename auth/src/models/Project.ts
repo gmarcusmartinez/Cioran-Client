@@ -4,9 +4,7 @@ interface ProjectAttrs {
   id: string;
   title: string;
 }
-
 export interface ProjectDoc extends mongoose.Document {
-  id: string;
   title: string;
 }
 
@@ -16,13 +14,14 @@ interface ProjectModel extends mongoose.Model<ProjectDoc> {
 
 export const projectSchema = new mongoose.Schema(
   {
-    id: { type: String, required: true },
     title: { type: String, required: true },
   },
   {
     toJSON: {
       transform(doc, ret) {
+        ret.id = ret._id;
         delete ret._id;
+        delete ret.__v;
       },
     },
   }

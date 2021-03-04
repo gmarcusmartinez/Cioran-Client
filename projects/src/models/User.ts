@@ -34,6 +34,7 @@ const userSchema = new mongoose.Schema(
 
 userSchema.set('versionKey', 'version');
 userSchema.plugin(updateIfCurrentPlugin);
+
 userSchema.statics.build = (attrs: UserAttrs) =>
   new User({ _id: attrs.id, name: attrs.name, avatar: attrs.avatar });
 

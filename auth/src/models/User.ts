@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import { PasswordManager } from '../services/PasswordManager';
-import { ProjectDoc, projectSchema } from './Project';
+import { ProjectDoc } from './Project';
+import { IUserProject } from '@cioran/common';
 
 interface UserAttrs {
   name: string;
@@ -15,9 +16,9 @@ interface UserDoc extends mongoose.Document {
   email: string;
   password: string;
   avatar: string;
-  projects: ProjectDoc[];
+  projects: IUserProject[];
   getSignedJwtToken(): string;
-  addProject(project: ProjectDoc): void;
+  addProject: (project: ProjectDoc) => void;
 }
 
 interface UserModel extends mongoose.Model<UserDoc> {
@@ -30,7 +31,12 @@ const userSchema = new mongoose.Schema<UserDoc>(
     email: { type: String, required: true },
     password: { type: String, required: true },
     avatar: { type: String, default: '' },
-    projects: [projectSchema],
+    projects: [
+      {
+        _id: { type: String, required: true },
+        title: { type: String, required: true },
+      },
+    ],
   },
   {
     toJSON: {
@@ -60,8 +66,8 @@ userSchema.methods.getSignedJwtToken = function () {
 };
 
 userSchema.methods.addProject = function (project: ProjectDoc) {
-  const { projects } = this;
-  return projects.push(project);
+  const { title } = project;
+  this.projects.push({ title, _id: project.id });
 };
 
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
