@@ -1,12 +1,10 @@
 import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
-import { IUserProject } from '../interfaces';
 
 interface UserPayload {
   id: string;
   email: string;
   name: string;
-  projects: IUserProject[];
 }
 
 declare global {
