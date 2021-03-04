@@ -4,7 +4,7 @@ import links from './links.json';
 import { useSelector } from 'react-redux';
 import { useActions } from '../../hooks/use-actions';
 
-export const Navigation = () => {
+export const Navigation = ({ name }) => {
   const { isOpen } = useSelector((state) => state.nav);
   const { toggleNav } = useActions();
 
@@ -24,7 +24,7 @@ export const Navigation = () => {
       <div className='navigation__usr-img'>
         <div />
       </div>
-      <span>Test User</span>
+      <span>{name}</span>
       <div className='navigation__links'>{navlinks}</div>
     </div>
   );

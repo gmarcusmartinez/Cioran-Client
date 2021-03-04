@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useActions } from '../hooks/use-actions';
 import { Modal } from '../components/Modal';
-// import buildClient from "api/build-client";
+import buildClient from '../api/build-client';
 
 const LandingPage = ({ currentUser }) => {
   const router = useRouter();
@@ -32,9 +32,9 @@ const LandingPage = ({ currentUser }) => {
 };
 
 LandingPage.getInitialProps = async (context) => {
-  // const client = buildClient(context);
-  // const { data } = await client.get("/api/auth/currentuser");
-  return {};
+  const client = buildClient(context);
+  const { data } = await client.get('/api/auth/currentuser');
+  return data;
 };
 
 export default LandingPage;

@@ -1,10 +1,13 @@
 .auth-form {
-  animation: 0.25s ease-out slide-in-from-right;
   background-color: transparent;
   width: 32rem;
   display: flex;
-  justify-content: center;
-  transition: var(--transition-fast);
+  flex-direction: column;
+  align-items: center;
+  form {
+    animation: 0.25s ease-out slide-in-from-right;
+    transition: var(--tzransition-fast);
+  }
 }
 
 .set-form-display {
@@ -12,6 +15,8 @@
   font-weight: 300;
   letter-spacing: var(--letter-spacing-sm);
   align-self: center;
+  margin-left: 2rem;
+  margin-top: 2rem;
   width: 100%;
   span:first-child {
     color: var(--color-grey-light);
@@ -25,30 +30,23 @@
     }
   }
 }
-.signin-form {
-  @include default-form;
-  display: grid;
-  grid-template-rows: 6rem 10rem 10rem 6rem 6rem;
-  width: 32rem;
-  @include respond(tablet) {
-    width: 30rem;
-  }
-  h3 {
-    letter-spacing: var(--letter-spacing-md);
-  }
-  align-items: center;
-}
-
+.signin-form,
 .signup-form {
   @include default-form;
   display: grid;
-  grid-template-rows: 6rem 9rem 9rem 9rem 6rem 6rem;
   width: 32rem;
-  @include respond(tablet) {
-    width: 30rem;
-  }
   h3 {
     letter-spacing: var(--letter-spacing-md);
   }
   align-items: center;
+  @include respond(tablet) {
+    width: 30rem;
+  }
+}
+
+.signin-form {
+  grid-template-rows: 6rem 10rem 10rem 6rem;
+}
+.signup-form {
+  grid-template-rows: 6rem 9rem 9rem 9rem 6rem;
 }

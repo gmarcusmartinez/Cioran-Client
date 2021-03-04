@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from '../../CustomInputs/Text';
+import { Text } from '../../CustomInputs/Text';
 
 export const CreateProjectForm = () => {
   const [formData, setFormData] = React.useState({ title: '', slug: '' });
@@ -9,7 +9,6 @@ export const CreateProjectForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     setFormData({ title: '', slug: '' });
   };
 

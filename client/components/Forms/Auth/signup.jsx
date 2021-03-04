@@ -1,22 +1,26 @@
-import { useState } from 'react';
+import React from 'react';
 import Router from 'next/router';
+import { signupInputs } from './inputs';
+import { Text } from '../../CustomInputs/Text';
 import useRequest from '../../../hooks/use-request';
-import Text from '../../CustomInputs/Text';
+import { useActions } from '../../../hooks/use-actions';
 
-export const Signup = ({ setFormDisplay }) => {
+export const Signup = () => {
   const defaultForm = { name: '', email: '', password: '' };
-  const [formData, setFormData] = useState(defaultForm);
+  const [formData, setFormData] = React.useState(defaultForm);
+  const { toggleModal } = useActions();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const { doRequest, errors } = useRequest({
     url: '/api/auth/signup',
     method: 'post',
     body: formData,
-    onSuccess: () => Router.push('/dashboard/projects'),
+    onSuccess: () => {
+      Router.push('/dashboard/projects');
+      toggleModal(false, '');
+    },
   });
 
   const handleSubmit = async (e) => {
@@ -27,42 +31,22 @@ export const Signup = ({ setFormDisplay }) => {
   const setError = (field) =>
     errors ? errors.find((err) => err.field === field) : null;
 
-  const handleSetFormDisplay = () => setFormDisplay('RENDER_SIGNIN');
-
   return (
-    <div className='auth-form'>
-      <form className='signup-form' onSubmit={handleSubmit}>
-        <h3>Create Your Account</h3>
+    <form className='signup-form' onSubmit={handleSubmit}>
+      <h3>Create Your Account</h3>
+      {signupInputs.map((i, idx) => (
         <Text
-          label='Name'
-          name='name'
-          required={true}
-          value={formData.name}
+          key={idx}
+          label={i.label}
+          type={i.type}
+          name={i.name}
+          required={i.required}
+          value={formData[i.formData]}
           onChange={handleChange}
-          // error={setError("title")}
+          error={setError(`${i.errorField}`)}
         />
-        <Text
-          label='Email'
-          name='email'
-          required={true}
-          value={formData.email}
-          onChange={handleChange}
-          // error={setError("title")}
-        />
-        <Text
-          label='Password'
-          name='password'
-          required={true}
-          value={formData.password}
-          onChange={handleChange}
-          // error={setError("slug")}
-        />
-        <button className='btn-primary'>Signup</button>
-        <div className='set-form-display'>
-          <span>Already have an account? </span>
-          <span onClick={handleSetFormDisplay}>Signin</span>
-        </div>
-      </form>
-    </div>
+      ))}
+      <button className='btn-primary'>Signup</button>
+    </form>
   );
 };

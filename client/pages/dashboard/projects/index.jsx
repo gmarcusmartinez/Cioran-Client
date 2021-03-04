@@ -1,6 +1,6 @@
 import React from 'react';
 import { CreateProjectBtn } from './create-project-btn';
-import { DashboardLayout } from '../../../layouts/Dashboard';
+import DashboardLayout from '../../../layouts/Dashboard';
 
 const ProjectConsole = () => {
   return (

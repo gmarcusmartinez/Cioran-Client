@@ -55,8 +55,8 @@ userSchema.pre('save', async function (done) {
 });
 
 userSchema.methods.getSignedJwtToken = function () {
-  const { id, email } = this;
-  return jwt.sign({ id, email }, process.env.JWT_KEY!);
+  const { id, email, name } = this;
+  return jwt.sign({ id, email, name }, process.env.JWT_KEY!);
 };
 
 userSchema.methods.addProject = function (project: ProjectDoc) {

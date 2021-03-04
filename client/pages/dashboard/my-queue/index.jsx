@@ -1,6 +1,5 @@
 import React from 'react';
-import { useActions } from '../../../hooks/use-actions';
-import { DashboardLayout } from '../../../layouts/Dashboard';
+import DashboardLayout from '../../../layouts/Dashboard';
 
 const MyQueue = () => {
   return (
