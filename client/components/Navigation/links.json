@@ -1,22 +1,17 @@
 [
   {
-    "text": "projects",
-    "to": "/dashboard/projects"
+    "to": "projects"
   },
   {
-    "text": "my queue",
-    "to": "/dashboard/my-queue"
+    "to": "my-queue"
   },
   {
-    "text": "inbox",
-    "to": "/dashboard/inbox"
+    "to": "inbox"
   },
   {
-    "text": "settings",
-    "to": "/dashboard/settings"
+    "to": "settings"
   },
   {
-    "text": "signout",
-    "to": "/dashboard/signout"
+    "to": "signout"
   }
 ]

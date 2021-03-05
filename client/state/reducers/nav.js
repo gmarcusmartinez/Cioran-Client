@@ -1,7 +1,7 @@
 import { TOGGLE_NAV } from '../types';
 
 const initialState = {
-  isOpen: false,
+  isOpen: true,
 };
 
 export const nav = (state = initialState, action) => {

@@ -3,12 +3,11 @@
   background-color: var(--color-dark-theme-secondary);
   box-shadow: var(--box-shadow-light);
   display: flex;
-  height: 10vh;
+  height: calc(10vh - 0.2rem);
   position: relative;
   span {
     display: none;
   }
-
   &__links {
     display: flex;
     flex-direction: column;
