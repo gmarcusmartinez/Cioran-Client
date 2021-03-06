@@ -1,6 +1,6 @@
 {
   "name": "@cioran/common",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "description": "",
   "main": "./build/index.js",
   "types": "./build/index.d.js",
@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "del ./build/*",
     "build": "npm run clean && tsc ",
-    "pub": "git add . && git commit -m \"UserCreated event added \" && npm version patch && npm run build && npm publish"
+    "pub": "git add . && git commit -m \"ITeamMember interface added \" && npm version patch && npm run build && npm publish"
   },
   "keywords": [],
   "author": "",
