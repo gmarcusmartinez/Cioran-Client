@@ -1,16 +1,5 @@
+import { ITeamMember } from '../interfaces';
 import { Subjects } from '../subjects';
-
-export enum RoleType {
-  Admin = 'admin',
-  Member = 'member',
-}
-
-export interface TeamMember {
-  _id: string;
-  name: string;
-  avatar: string;
-  role: RoleType;
-}
 
 export interface ProjectCreatedEvent {
   subject: Subjects.ProjectCreated;
@@ -18,7 +7,7 @@ export interface ProjectCreatedEvent {
     id: string;
     title: string;
     slug: string;
-    team: TeamMember[];
+    team: ITeamMember[];
     projectOwner: string;
   };
 }

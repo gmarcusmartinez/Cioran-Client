@@ -3,8 +3,10 @@ export declare enum RoleType {
     Admin = "admin",
     Member = "member"
 }
-export interface ITeamMember {
+export interface TeamMember {
     _id: string;
+    name: string;
+    avatar: string;
     role: RoleType;
 }
 export interface ProjectCreatedEvent {
@@ -13,7 +15,7 @@ export interface ProjectCreatedEvent {
         id: string;
         title: string;
         slug: string;
-        team: ITeamMember[];
+        team: TeamMember[];
         projectOwner: string;
     };
 }

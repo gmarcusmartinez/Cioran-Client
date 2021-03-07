@@ -1,11 +1,11 @@
+import { RoleType } from '../events/project-created-event';
+
 export interface IUserProject {
   _id: string;
   title: string;
 }
 
-export interface IProjectSprint {
+export interface ITeamMember {
   _id: string;
-  title: string;
-  startDate: Date;
-  endDate: Date;
+  role: RoleType;
 }
