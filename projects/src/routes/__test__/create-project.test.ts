@@ -3,8 +3,6 @@ import { app } from '../../app';
 import { Project } from '../../models/Project';
 import { fakeAuthCookie } from '../../test/auth-helper';
 import { natsWrapper } from '../../nats-wrapper';
-import mongoose from 'mongoose';
-import { User } from '../../models/User';
 
 describe('Route Access', () => {
   it('has a route handler listening to /api/projects for post requests', async () => {
