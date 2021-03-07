@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
+import mongoose from "mongoose";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 interface SprintAttrs {
   project: string;
@@ -26,19 +26,44 @@ interface SprintModel extends mongoose.Model<SprintDoc> {
 const { ObjectId } = mongoose.Schema.Types;
 
 const sprintSchema = new mongoose.Schema({
-  project: { id: { type: ObjectId, ref: 'Project' } },
-  title: { type: String, required: true, trim: true, maxlength: 40 },
-  objective: { type: String, trim: true, maxlength: 140 },
-  startDate: { type: Date, required: true },
-  endDate: { type: Date, required: true },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date },
+  project: {
+    id: {
+      type: ObjectId,
+      ref: "Project",
+    },
+  },
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+    maxlength: 40,
+  },
+  objective: {
+    type: String,
+    trim: true,
+    maxlength: 140,
+  },
+  startDate: {
+    type: Date,
+    required: true,
+  },
+  endDate: {
+    type: Date,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+  },
 });
 
-sprintSchema.set('versionKey', 'version');
+sprintSchema.set("versionKey", "version");
 sprintSchema.plugin(updateIfCurrentPlugin);
 sprintSchema.statics.build = (attrs: SprintAttrs) => new Sprint(attrs);
 
-const Sprint = mongoose.model<SprintDoc, SprintModel>('Sprint', sprintSchema);
+const Sprint = mongoose.model<SprintDoc, SprintModel>("Sprint", sprintSchema);
 
 export { Sprint };

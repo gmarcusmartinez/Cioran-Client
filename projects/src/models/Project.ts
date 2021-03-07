@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
-import { UserDoc } from './User';
-import { TeamMember, RoleType } from '@cioran/common/build';
-import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
+import { ITeamMember, RoleType } from '@cioran/common/build';
 
 interface ProjectAttrs {
   title: string;
@@ -14,8 +12,8 @@ interface ProjectDoc extends mongoose.Document {
   title: string;
   slug: string;
   projectOwner: string;
-  team: TeamMember[];
-  assignRole: (user: UserDoc, role: RoleType) => void;
+  team: ITeamMember[];
+  assignRole: (id: string, role: RoleType) => void;
 }
 
 interface ProjectModel extends mongoose.Model<ProjectDoc> {
@@ -30,8 +28,6 @@ const projectSchema = new mongoose.Schema<ProjectDoc>(
     team: [
       {
         _id: { type: String, required: true },
-        name: { type: String, required: true },
-        avatar: { type: String },
         role: { type: String, required: true },
       },
     ],
@@ -41,19 +37,16 @@ const projectSchema = new mongoose.Schema<ProjectDoc>(
       transform(doc, ret) {
         ret.id = ret._id;
         delete ret._id;
-        delete ret.__v;
       },
     },
   }
 );
 
 projectSchema.set('versionKey', 'version');
-projectSchema.plugin(updateIfCurrentPlugin);
 projectSchema.statics.build = (attrs: ProjectAttrs) => new Project(attrs);
 
-projectSchema.methods.assignRole = function (user: UserDoc, role: RoleType) {
-  const { name, avatar } = user;
-  this.team.push({ name, avatar, role, _id: user.id });
+projectSchema.methods.assignRole = function (id: string, role: RoleType) {
+  this.team.push({ role, _id: id });
 };
 
 const Project = mongoose.model<ProjectDoc, ProjectModel>(

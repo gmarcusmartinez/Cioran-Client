@@ -26,11 +26,14 @@ describe('Route Access', () => {
 });
 
 describe('Unsuccessful Project Creation', () => {
+  const invalidTitle = '';
+  const invalidSlug = '';
+
   it('throws an error if an invalid title is provided', async () => {
     await request(app)
       .post('/api/projects')
       .set('Cookie', fakeAuthCookie())
-      .send({ title: '', slug: 'TEST' })
+      .send({ title: invalidTitle, slug: 'TEST' })
       .expect(400);
   });
 
@@ -38,7 +41,7 @@ describe('Unsuccessful Project Creation', () => {
     await request(app)
       .post('/api/projects')
       .set('Cookie', fakeAuthCookie())
-      .send({ title: 'test project', slug: '' })
+      .send({ title: 'test project', slug: invalidSlug })
       .expect(400);
   });
 
@@ -51,32 +54,32 @@ describe('Unsuccessful Project Creation', () => {
   });
 });
 
-// describe('Successful Project Creation', () => {
-// const title = 'Test Project';
-// const slug = 'TEST';
+describe('Successful Project Creation', () => {
+  const title = 'Test Project';
+  const slug = 'TEST';
 
-// it('returns a project with valid form inputs', async () => {
-//   let projects = await Project.find({});
-//   expect(projects.length).toEqual(0);
+  it('returns a project with valid form inputs', async () => {
+    let projects = await Project.find({});
+    expect(projects.length).toEqual(0);
 
-//   await request(app)
-//     .post('/api/projects')
-//     .set('Cookie', fakeAuthCookie())
-//     .send({ title, slug })
-//     .expect(201);
-//   projects = await Project.find({});
+    await request(app)
+      .post('/api/projects/')
+      .set('Cookie', fakeAuthCookie())
+      .send({ title, slug })
+      .expect(201);
+    projects = await Project.find({});
 
-//   expect(projects.length).toEqual(1);
-//   expect(projects[0].title).toBe('Test Project');
-//   expect(projects[0].slug).toBe('TEST');
-// });
+    expect(projects.length).toEqual(1);
+    expect(projects[0].title).toBe('Test Project');
+    expect(projects[0].slug).toBe('TEST');
+  });
 
-//   it("publishes an event", async () => {
-//     await request(app)
-//       .post("/api/projects")
-//       .set("Cookie", fakeAuthCookie())
-//       .send({ title, slug })
-//       .expect(201);
-//     expect(natsWrapper.client.publish).toHaveBeenCalled();
-//   });
-// });
+  it('publishes an event', async () => {
+    await request(app)
+      .post('/api/projects/')
+      .set('Cookie', fakeAuthCookie())
+      .send({ title, slug })
+      .expect(201);
+    expect(natsWrapper.client.publish).toHaveBeenCalled();
+  });
+});
