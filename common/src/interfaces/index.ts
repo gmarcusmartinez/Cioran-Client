@@ -1,5 +1,7 @@
-import { RoleType } from '../events/project-created-event';
-
+export enum RoleType {
+  Admin = 'admin',
+  Member = 'member',
+}
 export interface IUserProject {
   _id: string;
   title: string;
