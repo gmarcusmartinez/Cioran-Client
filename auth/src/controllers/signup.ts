@@ -1,17 +1,13 @@
-import { Request, Response } from "express";
-import { BadRequestError, asyncHandler } from "@cioran/common";
-import { User } from "../models/User";
-import { UserCreatedPublisher } from "../events/publishers/user-created-publisher";
-import { natsWrapper } from "../nats-wrapper";
+import { Request, Response } from 'express';
+import { BadRequestError, asyncHandler } from '@cioran/common';
+import { User } from '../models/User';
+import { UserCreatedPublisher } from '../events/publishers/user-created-publisher';
+import { natsWrapper } from '../nats-wrapper';
 
 export const signup = asyncHandler(async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
-
   const existingUser = await User.findOne({ email });
-  if (existingUser) throw new BadRequestError("Email in use.");
-
-  if (!email || !password)
-    throw new BadRequestError("Please provide all required fields.");
+  if (existingUser) throw new BadRequestError('Email in use.');
 
   const user = User.build({ name, email, password });
   await user.save();

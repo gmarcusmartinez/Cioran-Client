@@ -19,5 +19,6 @@ export const createProject = async (req: Request, res: Response) => {
     projectOwner: project.projectOwner,
     team: project.team,
   });
+
   res.status(201).send(project);
 };

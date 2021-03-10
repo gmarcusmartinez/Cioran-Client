@@ -7,9 +7,9 @@ const DashboardLayout = ({ currentUser, children }) => {
   const router = useRouter();
   const name = currentUser ? currentUser.name : '';
 
-  // React.useEffect(() => {
-  //   if (!currentUser) router.push('/');
-  // }, []);
+  React.useEffect(() => {
+    if (!currentUser) router.push('/');
+  }, []);
 
   return (
     <div className='dashboard-wrapper'>
