@@ -16,12 +16,12 @@ export const updateProject = async (req: Request, res: Response) => {
 
   await project.save();
 
-  // await new ProjectUpdatedPublisher(natsWrapper.client).publish({
-  //   id: project.id,
-  //   title: project.title,
-  //   slug: project.slug,
-  //   projectOwner: project.projectOwner,
-  // });
+  await new ProjectUpdatedPublisher(natsWrapper.client).publish({
+    id: project.id,
+    title: project.title,
+    slug: project.slug,
+    projectOwner: project.projectOwner,
+  });
 
-  res.status(201).send(project);
+  res.status(204).send(project);
 };
