@@ -6,10 +6,11 @@ import { RoleType } from '@cioran/common/build';
 
 export const createProject = async (req: Request, res: Response) => {
   const { title, slug } = req.body;
-  const id = req.currentUser!.id;
+  const projectOwner = req.currentUser!.id;
 
-  const project = Project.build({ title, slug, projectOwner: id });
-  project.assignRole(id, RoleType.Admin);
+  const project = Project.build({ title, slug, projectOwner });
+  project.assignRole(projectOwner, RoleType.Admin);
+
   await project.save();
 
   await new ProjectCreatedPublisher(natsWrapper.client).publish({

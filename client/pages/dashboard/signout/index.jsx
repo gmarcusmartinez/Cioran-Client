@@ -7,21 +7,21 @@ import DashboardLayout from '../../../layouts/Dashboard';
 const Signout = () => {
   const { toggleModal } = useActions();
 
-  // const { doRequest, errors } = useRequest({
-  //   url: '/api/auth/signout',
-  //   method: 'post',
-  //   body: {},
-  //   onSuccess: () => {
-  //     Router.push('/');
-  //     toggleModal(false, '');
-  //   },
-  // });
+  const { doRequest, errors } = useRequest({
+    url: '/api/auth/signout',
+    method: 'post',
+    body: {},
+    onSuccess: () => {
+      Router.push('/');
+      toggleModal(false, '');
+    },
+  });
 
   React.useEffect(() => {
     toggleModal(true, 'SIGNOUT');
-    // setTimeout(() => {
-    //   doRequest();
-    // }, 500);
+    setTimeout(() => {
+      doRequest();
+    }, 500);
   }, []);
 
   return <div className='signout'></div>;

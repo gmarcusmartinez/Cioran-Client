@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 describe('Get Project Failure Cases', () => {
   const id = new mongoose.Types.ObjectId().toHexString();
 
-  it('Returns a 404 if the ticket is not found', async () => {
+  it('Returns a 404 if the project is not found', async () => {
     const response = await request(app)
       .get(`/api/projects/${id}`)
       .set('Cookie', fakeAuthCookie());
@@ -37,7 +37,7 @@ describe('Project Found', () => {
       .expect(200);
   });
 
-  it('Returns a 400 if the user does not belong to the project team', async () => {
+  it('Returns a 401 if the user does not belong to the project team', async () => {
     const malicousUser = fakeAuthCookie();
 
     const res = await request(app)
@@ -49,6 +49,6 @@ describe('Project Found', () => {
     await request(app)
       .get(`/api/projects/${res.body.id}`)
       .set('Cookie', malicousUser)
-      .expect(400);
+      .expect(401);
   });
 });

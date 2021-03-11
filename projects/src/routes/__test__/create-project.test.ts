@@ -65,6 +65,7 @@ describe('Successful Project Creation', () => {
       .set('Cookie', fakeAuthCookie())
       .send({ title, slug })
       .expect(201);
+
     projects = await Project.find({});
 
     expect(projects.length).toEqual(1);

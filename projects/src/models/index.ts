@@ -10,7 +10,7 @@ export const transformDoc = {
 
 export const teamMemberSchema = new mongoose.Schema(
   {
-    id: { type: String, required: true },
+    _id: { type: String, required: true },
     role: { type: String, required: true },
   },
   { toJSON: transformDoc }
