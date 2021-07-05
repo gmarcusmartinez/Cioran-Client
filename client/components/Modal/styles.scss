@@ -58,7 +58,7 @@
 
   @include respond(desktop) {
     &.closed {
-      transform: translateX(-100vw);
+      transform: translateX(-150vw);
     }
   }
 }

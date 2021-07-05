@@ -8,7 +8,7 @@ const DashboardLayout = ({ currentUser, children }) => {
   const name = currentUser ? currentUser.name : '';
 
   React.useEffect(() => {
-    if (!currentUser) router.push('/');
+    // if (!currentUser) router.push('/');
   }, []);
 
   return (

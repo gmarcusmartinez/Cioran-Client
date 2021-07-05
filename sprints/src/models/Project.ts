@@ -1,15 +1,31 @@
 import mongoose from 'mongoose';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
-import { TeamMember } from '@cioran/common';
+import { ITeamMember } from '@cioran/common';
 
 interface ProjectAttrs {
   id: string;
-  team: TeamMember[];
+  team: ITeamMember[];
 }
 
 export interface ProjectDoc extends mongoose.Document {
-  team: TeamMember[];
+  team: ITeamMember[];
 }
+
+export const transformDoc = {
+  transform(doc: any, ret: any) {
+    ret.id = ret._id;
+    delete ret._id;
+    delete ret.__v;
+  },
+};
+
+export const teamMemberSchema = new mongoose.Schema(
+  {
+    _id: { type: String, required: true },
+    role: { type: String, required: true },
+  },
+  { toJSON: transformDoc }
+);
 
 interface ProjectModel extends mongoose.Model<ProjectDoc> {
   build(attrs: ProjectAttrs): ProjectDoc;
@@ -17,24 +33,9 @@ interface ProjectModel extends mongoose.Model<ProjectDoc> {
 
 const projectSchema = new mongoose.Schema(
   {
-    team: [
-      {
-        _id: { type: String, required: true },
-        name: { type: String, required: true },
-        avatar: { type: String },
-        role: { type: String, required: true },
-      },
-    ],
+    team: [teamMemberSchema],
   },
-  {
-    toJSON: {
-      transform(doc, ret) {
-        ret.id = ret._id;
-        delete ret._id;
-        delete ret.__v;
-      },
-    },
-  }
+  { toJSON: transformDoc }
 );
 
 projectSchema.set('versionKey', 'version');

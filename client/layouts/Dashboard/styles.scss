@@ -30,10 +30,15 @@
       }
     }
     @include respond(desktop) {
-      display: grid;
-      grid-template-columns: 26rem auto;
+      box-shadow: var(--box-shadow-medium);
+      flex-direction: row;
+      // grid-template-columns: 26rem auto;
       height: 95vh;
       width: 95vw;
+      &__content {
+        height: 100%;
+        width: calc(100% - 260px);
+      }
     }
   }
 }

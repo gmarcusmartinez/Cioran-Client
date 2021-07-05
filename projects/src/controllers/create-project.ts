@@ -12,7 +12,6 @@ export const createProject = async (req: Request, res: Response) => {
   project.assignRole(projectOwner, RoleType.Admin);
 
   await project.save();
-
   await new ProjectCreatedPublisher(natsWrapper.client).publish({
     id: project._id,
     title: project.title,
