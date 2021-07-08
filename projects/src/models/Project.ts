@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { ITeamMember, RoleType } from '@cioran/common/build';
-import { teamMemberSchema, transformDoc } from './';
+import { teamMemberSchema } from './';
 
 interface ProjectAttrs {
   title: string;
@@ -28,7 +28,15 @@ const projectSchema = new mongoose.Schema<ProjectDoc>(
     projectOwner: { type: String, required: true },
     team: [teamMemberSchema],
   },
-  { toJSON: transformDoc }
+  {
+    toJSON: {
+      transform(doc: any, ret: any) {
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.__v;
+      },
+    },
+  }
 );
 
 projectSchema.set('versionKey', 'version');
